@@ -15,3 +15,11 @@ Bank::Bank() {
 Bank::~Bank() {
 	// TODO Auto-generated destructor stub
 }
+
+int Bank::getTotalAccounts(){
+	return totalAccounts;
+}
+
+void Bank::setTotalAccounts(int g){
+	totalAccounts = g;
+}
