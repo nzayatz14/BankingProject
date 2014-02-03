@@ -2,20 +2,61 @@
  * InternalAccount.cpp
  *
  *  Created on: Feb 1, 2014
- *      Author: nzayatz14
+ *      Author: Junjieliao
  */
 
+#include<iostream>
 #include "InternalAccount.h"
 
-namespace std {
+using namespace std;
 
-InternalAccount::InternalAccount() {
+InternalAccount::InternalAccount(string m,ExternalAccount&exAcct) {
 	// TODO Auto-generated constructor stub
-
-}
+	accountType=m;
+	money=0;
+	externalAccount=&exAcct;
+}//end InternalAccount
 
 InternalAccount::~InternalAccount() {
 	// TODO Auto-generated destructor stub
+	delete money;
+	delete externalAccount;
+	delete accountType;
+}//end ~InternalAccount
+
+void InternalAccount::copyInternalAccount(InternalAccount& into){
+	into.setMoney(money);
+	into.setAccountType(accountType);
+	into.setExternalAccount(externalAccount);
 }
 
-}
+void InternalAccount::setAccountType(string acct){
+	accountType=acct;
+}//end setAccountType
+
+void InternalAccount::setMoney(double m){
+	money=m;
+}//end setMoney
+
+void InternalAccount::setExternalAccount(ExternalAccount exA){
+	externalAccount=exA;
+}//end setExternalAccount
+
+string InternalAccount::getAccountType(){
+	return accountType;
+}//end getAccountType
+
+double InternalAccount::getMoney(){
+	return money;
+}//end getMoney
+
+ExternalAccount InternalAccount::getExternalAccount(){
+	return externalAccount;
+}//end getExternalAccount
+
+void InternalAccount::displayInternalAccount(){
+	cout<<"Your corresponding external account is:"<<externalAccount<<endl;
+	cout<<"Your account type is:"<<accountType<<endl;
+	cout<<"Your money in your account is:"<<money<<endl;
+}//end displayInteralAccount
+
