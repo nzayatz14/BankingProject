@@ -10,8 +10,10 @@
 
 namespace std {
 
+
 class ExternalAccount {
 private:
+	Bank b;
 	int accountNumber;
 	Client accountHolder;
 	InternalAccount internalAccounts[2];
@@ -24,29 +26,19 @@ public:
 
 	void setPassword(string s);
 	void setAccountHolder(Client &c);
-	void setInternalAccounts(InternalAccount &a[]);
+	void setInternalAccounts(InternalAccount &a, InternalAccount &b);
 	void setAccountNumber(int g);
 
-	void createInternalAccount(string name);
+	void createInternalAccounts();
 	void displayExternalAccount();
 	void copyExternalAccount(ExternalAccount &e);
+
+	void login();
+	void logout();
 
 	ExternalAccount();
 	virtual ~ExternalAccount();
 };
-
-template<>
-class hash<ExternalAccount>{
-	typedef size_t result_type;
-
-	result_type operator()(const ExternalAccount &c) const{
-		size_t value{0};
-		boost::hash_combine(value, c.accountNumber);
-		boost::hash_combine(value, c.password);
-
-		return value;
-	}
-}
 }
 
 #endif /* EXTERNALACCOUNT_H_ */
