@@ -8,6 +8,7 @@
 #ifndef CLIENT_H_
 #define CLIENT_H_
 
+#include "Person.h"
 #include "ExternalAccount.h"
 
 using namespace std;
