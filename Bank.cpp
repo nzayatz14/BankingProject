@@ -6,6 +6,7 @@
  */
 
 #include "Bank.h"
+#include "Client.h"
 #include <fstream>
 #include <sstream>
 using namespace std;
@@ -24,7 +25,7 @@ Bank::Bank() {
 		ifstream acct;
 		ostringstream ss;
 		string accountNumb;
-		ss<<account;
+		ss<<accountNumber;
 		accountNumb = ss.str();
 		accountNumb = accountNumb + ".txt";
 		acct.open(accountNumb.c_str());
@@ -57,8 +58,8 @@ void Bank::setTotalAccounts(int g){
 void Bank::printBank(){
 	for(auto i = bank.begin(); i!=bank.end();i++){
 		ExternalAccount temp = i->second;
-		Client c;
-		c = temp.getAccountHolder(c);
+		Client *c;
+		temp.getAccountHolder(*c);
 		string userName = i->first;
 		cout<< userName<<" "<< temp.getPassword()<<" "<< temp.getAccountNumber()<<endl;
 	}
@@ -66,7 +67,7 @@ void Bank::printBank(){
 
 void Bank::createExternalAccount(Client &a, string pass){
 	ExternalAccount n;
-	n = n.setAccountHolder(a);
+	n.setAccountHolder(a);
 	n.setPassword(pass);
 	n.createInternalAccounts();
 	string user = a.getUserName();
@@ -81,7 +82,8 @@ void Bank::deleteExternalAccount(string user){
 
 void Bank::find(string user, ExternalAccount &a){
 	unordered_map<string,ExternalAccount>::const_iterator found = bank.find (user);
-	found->second.copyExternalAccount(a);
+	ExternalAccount temp = found->second;
+	temp.copyExternalAccount(a);
 
 }
 
