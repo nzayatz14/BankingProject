@@ -10,18 +10,16 @@
 
 using namespace std;
 
-InternalAccount::InternalAccount(string m,ExternalAccount&exAcct) {
+InternalAccount::InternalAccount() {
 	// TODO Auto-generated constructor stub
-	accountType=m;
+	accountType= "Checking";
 	money=0;
-	externalAccount=&exAcct;
+	externalAccount= new ExternalAccount();
 }//end InternalAccount
 
 InternalAccount::~InternalAccount() {
 	// TODO Auto-generated destructor stub
-	delete money;
-	delete externalAccount;
-	delete accountType;
+	delete [] externalAccount;
 }//end ~InternalAccount
 
 void InternalAccount::copyInternalAccount(InternalAccount& into){
@@ -38,7 +36,7 @@ void InternalAccount::setMoney(double m){
 	money=m;
 }//end setMoney
 
-void InternalAccount::setExternalAccount(ExternalAccount exA){
+void InternalAccount::setExternalAccount(ExternalAccount &exA){
 	externalAccount=exA;
 }//end setExternalAccount
 
