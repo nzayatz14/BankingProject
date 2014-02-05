@@ -16,7 +16,9 @@ class Client {
 public:
 	Client();//constructor
 	virtual ~Client();//destructor
-	void copyClient(const Client&);//function copies information from another client
+	ExternalAccount getHeldAccount();//function returns heldAccount
+	void setHeldAccount(ExternalAccount &a);//function sets the held account
+	void copyClient(Client &into);//function copies information from another client
 	void viewExternalAccount();//function calls displayExternalAccount()
 	void withdraw();
 	//ask the user what account they wish to withdraw from and how much
@@ -48,4 +50,3 @@ protected:
 
 
 #endif /* CLIENT_H_ */
-
