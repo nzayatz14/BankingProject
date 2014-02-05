@@ -39,9 +39,9 @@ void ExternalAccount::getAccountHolder(Client &c){
 	accountHolder.copyClient(c);
 }
 
-void ExternalAccount::getInternalAccounts(InternalAccount &d[]){
-	internalAccounts[0].copyInternalAccount(d[0]);
-	internalAccounts[1].copyInternalAccount(d[1]);
+void ExternalAccount::getInternalAccounts(InternalAccount &d, InternalAccount &e){
+	internalAccounts[0].copyInternalAccount(d);
+	internalAccounts[1].copyInternalAccount(e);
 }
 
 void ExternalAccount::setPassword(string s){
