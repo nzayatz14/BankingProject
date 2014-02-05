@@ -5,12 +5,13 @@
  *      Author: nzayatz14
  */
 
-#include<iostream>
-#include<unordered_map>
-#include "ExternalAccount.h"
+
 
 #ifndef BANK_H_
 #define BANK_H_
+#include<iostream>
+#include<unordered_map>
+#include "ExternalAccount.h"
 
 using namespace std;
 typedef unordered_map<string ,ExternalAccount> Accounts;
