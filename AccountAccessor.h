@@ -7,6 +7,9 @@
 
 #include "ExternalAccount.h"
 #include "Bank.h"
+#include "Person.h"
+#include "Client.h"
+#include "InternalAccount.h"
 
 #ifndef ACCOUNTACCESSOR_H_
 #define ACCOUNTACCESSOR_H_
@@ -20,6 +23,9 @@ private:
 public:
 	AccountAccessor();
 	virtual ~AccountAccessor();
+
+	void login(Person &per);
+	void logout();
 };
 
 }
