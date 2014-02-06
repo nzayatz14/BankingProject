@@ -9,18 +9,18 @@
 #define CLIENT_H_
 
 #include "Person.h"
-#include "ExternalAccount.h"
+#include "InternalAccount.h"
 
 using namespace std;
 
-class Client {
+class Client:public Person {
 public:
 	Client();//constructor
 	virtual ~Client();//destructor
-	ExternalAccount getHeldAccount();//function returns heldAccount
-	void setHeldAccount(ExternalAccount &a);//function sets the held account
+	InternalAccount getHeldAccount();//function returns heldAccount
+	void setHeldAccount(InternalAccount &a[]);//function sets the held account
 	void copyClient(Client &into);//function copies information from another client
-	void viewExternalAccount();//function calls displayExternalAccount()
+	void viewInternalAccount();//function calls displayExternalAccount()
 	void withdraw();
 	//ask the user what account they wish to withdraw from and how much
 	//check to see that money is less than the total amount of money
@@ -46,7 +46,7 @@ public:
 	//the respective function
 
 protected:
-	ExternalAccount heldAccount;
+	InternalAccount heldAccount[];
 };
 
 
