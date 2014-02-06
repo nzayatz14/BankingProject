@@ -7,22 +7,20 @@
 
 
 #include <iostream>
+#include "InternalAccount.h"
+#include "Person.h"
+#include "Client.h"
 #ifndef EXTERNALACCOUNT_H_
 #define EXTERNALACCOUNT_H_
-
-class Bank;
-class Client;
-class InternalAccount;
 
 namespace std {
 
 
 class ExternalAccount {
 private:
-	Bank* b;
 	int accountNumber;
-	Client* accountHolder;
-	InternalAccount* internalAccounts[2];
+	Client accountHolder;
+	InternalAccount internalAccounts[2];
 	string password;
 public:
 	int getAccountNumber();
@@ -39,8 +37,7 @@ public:
 	void displayExternalAccount();
 	void copyExternalAccount(ExternalAccount &e);
 
-	void login();
-	void logout();
+
 
 	ExternalAccount();
 	virtual ~ExternalAccount();
