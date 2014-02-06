@@ -9,8 +9,8 @@ phoneNumber
 address
 email
 
-<account 0 = Checking Account>
+Checking
 money
 
-<account 1 = Savings Account>
+Savings
 money
