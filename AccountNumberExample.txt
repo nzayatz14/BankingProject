@@ -12,5 +12,5 @@ email
 <account 0 = Checking Account>
 money
 
-<account 0 = Savings Account>
+<account 1 = Savings Account>
 money
