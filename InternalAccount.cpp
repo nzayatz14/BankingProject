@@ -14,18 +14,18 @@ InternalAccount::InternalAccount() {
 	// TODO Auto-generated constructor stub
 	accountType= "Checking";
 	money=0;
-	externalAccount= new ExternalAccount();
+	username="user";
 }//end InternalAccount
 
-InternalAccount::~InternalAccount() {
-	// TODO Auto-generated destructor stub
-	delete [] externalAccount;
-}//end ~InternalAccount
+//InternalAccount::~InternalAccount() {
+//	// TODO Auto-generated destructor stub
+//	delete [] externalAccount;
+//}//end ~InternalAccount
 
 void InternalAccount::copyInternalAccount(InternalAccount& into){
 	into.setMoney(money);
 	into.setAccountType(accountType);
-	into.setExternalAccount(externalAccount);
+	into.setUsername(username);
 }
 
 void InternalAccount::setAccountType(string acct){
@@ -36,8 +36,8 @@ void InternalAccount::setMoney(double m){
 	money=m;
 }//end setMoney
 
-void InternalAccount::setExternalAccount(ExternalAccount &exA){
-	externalAccount=exA;
+void InternalAccount::setUsername(string nam){
+	username=nam;
 }//end setExternalAccount
 
 string InternalAccount::getAccountType(){
@@ -48,12 +48,12 @@ double InternalAccount::getMoney(){
 	return money;
 }//end getMoney
 
-ExternalAccount InternalAccount::getExternalAccount(){
-	return externalAccount;
-}//end getExternalAccount
+string InternalAccount::getUsername(){
+	return username;
+}//end username
 
 void InternalAccount::displayInternalAccount(){
-	cout<<"Your corresponding external account is:"<<externalAccount<<endl;
+	cout<<"Your account username is:"<<username<<endl;
 	cout<<"Your account type is:"<<accountType<<endl;
 	cout<<"Your money in your account is:"<<money<<endl;
 }//end displayInteralAccount
