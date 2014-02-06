@@ -68,36 +68,6 @@ void ExternalAccount::copyExternalAccount(ExternalAccount &e){
 	e.setPassword(password);
 }
 
-void ExternalAccount::login(){
-	string name, pass;
-		cout<<"Username: ";
-		cin>>name;
-		cout<<"Password: ";
-		cin>>pass;
-
-		b.find(name, this);
-
-		if (pass.compare(this.getPassword()) == 0){
-			int account = accountNumber;
-
-			ifstream in;
-			ostringstream ss;
-			string accountNumb;
-			ss<<account;
-			accountNumb = ss.str();
-			accountNumb = accountNumb + ".txt";
-			in.open(accountNumb.c_str());
-
-			//read in data
-
-			in.close();
-		}
-}
-
-void ExternalAccount::logout(){
-
-}
-
 ExternalAccount::~ExternalAccount() {
 	delete [] accountNumber;
 }
