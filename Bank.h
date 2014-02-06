@@ -12,6 +12,9 @@
 #include<iostream>
 #include<unordered_map>
 #include "ExternalAccount.h"
+#include "Person.h"
+#include "Client.h"
+#include "InternalAccount.h"
 
 using namespace std;
 typedef unordered_map<string ,ExternalAccount> Accounts;
