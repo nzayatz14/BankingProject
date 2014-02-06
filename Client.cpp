@@ -12,7 +12,7 @@ using namespace std;
 
 Client::Client() {
 	// TODO Auto-generated constructor stub
-	heldAccount=new ExternalAccount;
+	heldAccount=new InternalAccount;
 }
 
 Client::~Client() {
@@ -20,11 +20,12 @@ Client::~Client() {
 	delete [] heldAccount;
 }
 
-void Client::setHeldAccount(ExternalAccount& a){
-	heldAccount=a;
+void Client::setHeldAccount(InternalAccount& a[]){
+	a[0] = heldAccount[0];
+	a[1] = heldAccount[1];
 }
 
-ExternalAccount Client::getHeldAccount(){
+InternalAccount Client::getHeldAccount(){
 	return heldAccount;
 }
 
@@ -32,8 +33,9 @@ void Client::copyClient(Client &into){
 	into.setHeldAccount(heldAccount);
 }
 
-void Client::viewExternalAccount(){
-	heldAccount.displayExternalAccount();
+void Client::viewInternalAccount(){
+	heldAccount[0].displayInternalAccount();
+	heldAccount[1].displayInternalAccount();
 }
 
 void Client::withdraw(){
@@ -44,14 +46,11 @@ void Client::withdraw(){
 	cout<<"Please enter how much you want to withdraw from your account:";
 	double m;
 	cin>>m;
-	InternalAccount temp[2];
-	heldAccount.getInternalAccounts(temp);
-	if(temp[n-1].getMoney()<m){
-		cout<<"Sorry, the balance in your account is sufficient."<<endl;
-	}
+	if(heldAccount[n-1].getMoney()<m)
+		cout<<"Sorry, there is insufficient money in your account."<<endl;
 	else{
-		temp[n-1].setMoney(temp[n-1].getMoney()-m);
-		heldAccount.setInternalAccounts(temp);
+		heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()-m);
+		viewInternalAccount();
 	}
 	printOptions();
 }
@@ -63,9 +62,8 @@ void Client::deposit(){
 	cout<<"Please enter how much you want to deposit into the account:";
 	double m;
 	cin>>m;
-	InternalAccount temp[2];
-	heldAccount.getInternalAccounts(temp);
-	temp[n-1].setMoney(temp[n-1].getMoney()+m);
+	heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()+m);
+	viewInternalAccount();
 	printOptions();
 }
 void Client::transfer(){
@@ -76,22 +74,21 @@ void Client::transfer(){
 	cout<<"Please enter how much you want to transfer:";
 	double m;
 	cin>>m;
-	InternalAccount temp[2];
-	heldAccount.getInternalAccounts(temp);
-	if(temp[n-1].getMoney()<m)
+	if(heldAccount[n-1].getMoney()<m)
 		cout<<"Sorry, the balance in your account is sufficient."<<endl;
 	else{
-		temp[n-1].setMoney(temp[n-1].getMoney()-m);
+		heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()-m);
 		switch(n-1){
 		case 0:
-			temp[1].setMoney(temp[n-1].getMoney()+m);
+			heldAccount[1].setMoney(heldAccount[n-1].getMoney()+m);
 			break;
 		case 1:
-			temp[0].setMoney(temp[n-1].getMoney()+m);
+			heldAccount[0].setMoney(heldAccount[n-1].getMoney()+m);
 			break;
 		default:
 		}
 	}
+	viewInternalAccount();
 	printOptions();
 }
 void Client::printOptions(){
