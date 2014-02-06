@@ -6,7 +6,6 @@
  */
 
 #include "Bank.h"
-#include "Client.h"
 #include <fstream>
 #include <sstream>
 using namespace std;
