@@ -57,4 +57,3 @@ void InternalAccount::displayInternalAccount(){
 	cout<<"Your account type is:"<<accountType<<endl;
 	cout<<"Your money in your account is:"<<money<<endl;
 }//end displayInteralAccount
-
