@@ -8,7 +8,7 @@
 #ifndef PERSON_H_
 #define PERSON_H_
 
-namespace std;
+using namespace std;
 
 class Person {
 public:
