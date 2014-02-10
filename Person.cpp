@@ -7,7 +7,7 @@
 
 #include "Person.h"
 
-namespace std;
+using namespace std;
 
 Person::Person() {
 	// TODO Auto-generated constructor stub
@@ -105,4 +105,3 @@ void printOptions()
 {
 
 }
-
