@@ -14,7 +14,7 @@
 #include "Client.h"
 #include "InternalAccount.h"
 
-namespace std;
+using namespace std;
 
 class Admin: public Person {
 public:
@@ -23,14 +23,14 @@ public:
 	virtual ~Admin();
 	void viewBank();
 	void viewAccounts();
-	void createAccountInDetail();
+	void viewAccountInDetail();
 	void createAccount();
 	void deleteAccount();
 	void changePassword();
 	void printOptions();
 
 private:
-	string Bank;
+	Bank bank;
 };
 
 #endif /* ADMIN_H_ */
