@@ -12,21 +12,21 @@ using namespace std;
 
 Client::Client() {
 	// TODO Auto-generated constructor stub
-	heldAccount=new InternalAccount;
 }
 
 Client::~Client() {
 	// TODO Auto-generated destructor stub
-	delete [] heldAccount;
+	//delete [] heldAccount;
 }
 
-void Client::setHeldAccount(InternalAccount& a[]){
-	a[0] = heldAccount[0];
-	a[1] = heldAccount[1];
+void Client::setHeldAccount(InternalAccount (&a)[2]){
+	a[0].copyInternalAccount(heldAccount[0]);
+	a[1].copyInternalAccount(heldAccount[1]);
 }
 
-InternalAccount Client::getHeldAccount(){
-	return heldAccount;
+void Client::getHeldAccount(InternalAccount (&a)[]){
+	heldAccount[0].copyInternalAccount(a[0]);
+	heldAccount[1].copyInternalAccount(a[1]);
 }
 
 void Client::copyClient(Client &into){
@@ -111,5 +111,4 @@ void Client::printOptions(){
 			printOptions();
 	}
 }
-
 
