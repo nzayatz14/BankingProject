@@ -17,8 +17,8 @@ class Client:public Person {
 public:
 	Client();//constructor
 	virtual ~Client();//destructor
-	InternalAccount getHeldAccount();//function returns heldAccount
-	void setHeldAccount(InternalAccount &a[]);//function sets the held account
+	void getHeldAccount(InternalAccount (&a)[]);//function returns heldAccount
+	void setHeldAccount(InternalAccount (&a)[2]);//function sets the held account
 	void copyClient(Client &into);//function copies information from another client
 	void viewInternalAccount();//function calls displayExternalAccount()
 	void withdraw();
@@ -46,7 +46,7 @@ public:
 	//the respective function
 
 protected:
-	InternalAccount heldAccount[];
+	InternalAccount heldAccount[2];
 };
 
 
