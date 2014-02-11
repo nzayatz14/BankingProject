@@ -94,7 +94,7 @@ void Client::transfer(){
 	printOptions();
 }
 void Client::printOptions(){
-	cout<<"Here you can do: 1.Withdrawal 2.deposit 3.transfer. "<<
+	cout<<"Here you can do: 1.Withdrawal 2.Deposit 3.Transfer. "<<
 			"Enter the number to keep running: ";
 	int n;
 	cin>>n;

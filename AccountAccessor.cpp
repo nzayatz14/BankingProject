@@ -39,7 +39,6 @@ void AccountAccessor::login(Person *per){
 			per = new Admin();
 		}
 
-		per->printOptions();
 	}
 }
 
