@@ -19,7 +19,7 @@ AccountAccessor::~AccountAccessor() {
 	// TODO Auto-generated destructor stub
 }
 
-void AccountAccessor::login(Person &per){
+void AccountAccessor::login(Person *per){
 	string name, pass;
 	cout<<"Username: ";
 	cin>>name;
@@ -31,23 +31,16 @@ void AccountAccessor::login(Person &per){
 	bank.find(name, temp);
 
 	if (pass.compare(temp.getPassword()) == 0){
-		int account = temp.getAccountNumber();
 
-		ifstream in;
-		ostringstream ss;
-		string accountNumb;
-		ss<<account;
-		accountNumb = ss.str();
-		accountNumb = accountNumb + ".txt";
-		in.open(accountNumb.c_str());
+		if(name.compare("admin") != 0){
+			per = new Client();
+			temp.getAccountHolder(static_cast<Client*>(per));
+		}else{
+			per = new Admin();
+		}
 
-		//read in data and set it to person
-
-		in.close();
+		per->printOptions();
 	}
 }
 
-void AccountAccessor::logout(){
-
-}
 }

@@ -1,9 +1,9 @@
 //============================================================================
 // Name        : BankingProject.cpp
-// Author      : Nick Zayatz, Junjie Liao, Chris Davila, Michael Cantor
+// Author      : 
 // Version     :
 // Copyright   : Your copyright notice
-// Description : Main class for BankingProject
+// Description : Hello World in C++, Ansi-style
 //============================================================================
 
 #include <iostream>
@@ -11,6 +11,6 @@
 using namespace std;
 
 int main() {
-	cout << "!!!Hello World!!! Bruh" << endl; // prints !!!Hello World!!!
+	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 	return 0;
 }

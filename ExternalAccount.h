@@ -25,7 +25,7 @@ private:
 public:
 	int getAccountNumber();
 	string getPassword();
-	void getAccountHolder(Client &c);
+	void getAccountHolder(Client *c);
 	void getInternalAccounts(InternalAccount &d, InternalAccount &e);
 
 	void setPassword(string s);

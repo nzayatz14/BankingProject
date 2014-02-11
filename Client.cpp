@@ -12,28 +12,30 @@ using namespace std;
 
 Client::Client() {
 	// TODO Auto-generated constructor stub
-	heldAccount=new ExternalAccount;
 }
 
 Client::~Client() {
 	// TODO Auto-generated destructor stub
-	delete [] heldAccount;
+	//delete [] heldAccount;
 }
 
-void Client::setHeldAccount(ExternalAccount& a){
-	heldAccount=a;
+void Client::setHeldAccount(InternalAccount (&a)[2]){
+	a[0].copyInternalAccount(heldAccount[0]);
+	a[1].copyInternalAccount(heldAccount[1]);
 }
 
-ExternalAccount Client::getHeldAccount(){
-	return heldAccount;
+void Client::getHeldAccount(InternalAccount (&a)[]){
+	heldAccount[0].copyInternalAccount(a[0]);
+	heldAccount[1].copyInternalAccount(a[1]);
 }
 
 void Client::copyClient(Client &into){
 	into.setHeldAccount(heldAccount);
 }
 
-void Client::viewExternalAccount(){
-	heldAccount.displayExternalAccount();
+void Client::viewInternalAccount(){
+	heldAccount[0].displayInternalAccount();
+	heldAccount[1].displayInternalAccount();
 }
 
 void Client::withdraw(){
@@ -44,54 +46,51 @@ void Client::withdraw(){
 	cout<<"Please enter how much you want to withdraw from your account:";
 	double m;
 	cin>>m;
-	InternalAccount temp[2];
-	heldAccount.getInternalAccounts(temp);
-	if(temp[n-1].getMoney()<m){
-		cout<<"Sorry, the balance in your account is sufficient."<<endl;
-	}
+	if(heldAccount[n-1].getMoney()<m)
+		cout<<"Sorry, there is insufficient money in your account."<<endl;
 	else{
-		temp[n-1].setMoney(temp[n-1].getMoney()-m);
-		heldAccount.setInternalAccounts(temp);
+		heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()-m);
+		viewInternalAccount();
 	}
 	printOptions();
 }
 void Client::deposit(){
-	cout<<"Please select an account you want to withdraw money from:"<<
+	cout<<"Please select an account you want to deposit money to:"<<
 			"1.checking 2.saving"<<" Please enter a number:";
 	int n;
 	cin>>n;
 	cout<<"Please enter how much you want to deposit into the account:";
 	double m;
 	cin>>m;
-	InternalAccount temp[2];
-	heldAccount.getInternalAccounts(temp);
-	temp[n-1].setMoney(temp[n-1].getMoney()+m);
+	heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()+m);
+	viewInternalAccount();
 	printOptions();
 }
 void Client::transfer(){
-	cout<<"Please select an account you want to withdraw money from:"<<
+	cout<<"Please select an account you want to transfer money from:"<<
 			"1.checking 2.saving"<<" Please enter a number:";
 	int n;
 	cin>>n;
 	cout<<"Please enter how much you want to transfer:";
 	double m;
 	cin>>m;
-	InternalAccount temp[2];
-	heldAccount.getInternalAccounts(temp);
-	if(temp[n-1].getMoney()<m)
-		cout<<"Sorry, the balance in your account is sufficient."<<endl;
+	if(heldAccount[n-1].getMoney()<m)
+		cout<<"Sorry, the balance in your account is insufficient."<<endl;
 	else{
-		temp[n-1].setMoney(temp[n-1].getMoney()-m);
+		heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()-m);
 		switch(n-1){
 		case 0:
-			temp[1].setMoney(temp[n-1].getMoney()+m);
+			heldAccount[1].setMoney(heldAccount[n-1].getMoney()+m);
 			break;
 		case 1:
-			temp[0].setMoney(temp[n-1].getMoney()+m);
+			heldAccount[0].setMoney(heldAccount[n-1].getMoney()+m);
 			break;
 		default:
+			cout<<"Neither Account"<<endl;
+			break;
 		}
 	}
+	viewInternalAccount();
 	printOptions();
 }
 void Client::printOptions(){
@@ -114,5 +113,4 @@ void Client::printOptions(){
 			printOptions();
 	}
 }
-
 
