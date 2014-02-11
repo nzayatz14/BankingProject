@@ -75,11 +75,7 @@ void Client::transfer(){
 	double m;
 	cin>>m;
 	if(heldAccount[n-1].getMoney()<m)
-<<<<<<< HEAD
 		cout<<"Sorry, the balance in your account is insufficient."<<endl;
-=======
-		cout<<"Sorry, the balance in your account is sufficient."<<endl;
->>>>>>> 1f27d8d786f2a97d7aa07c2140725fcf93b0903b
 	else{
 		heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()-m);
 		switch(n-1){

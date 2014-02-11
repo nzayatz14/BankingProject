@@ -64,7 +64,6 @@ void ExternalAccount::copyExternalAccount(ExternalAccount &e){
 }
 
 ExternalAccount::~ExternalAccount() {
-	delete accountNumber;
 }
 
 }

@@ -43,7 +43,7 @@ void Person::setGender(char g)
 	gender = g;
 }
 
-string Person::getGender()
+char Person::getGender()
 {
 	return gender;
 }

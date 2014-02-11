@@ -4,7 +4,7 @@
  *  Created on: Feb 1, 2014
  *      Author: mac2nd
  */
-
+#include <iostream>
 #ifndef PERSON_H_
 #define PERSON_H_
 
@@ -19,7 +19,7 @@ public:
 	void setBirthday(string);
 	string getBirthday();
 	void setGender(char);
-	string getGender();
+	char getGender();
 	void setPhoneNumber(string );
 	string getPhoneNumber();
 	void setAddress(string);
