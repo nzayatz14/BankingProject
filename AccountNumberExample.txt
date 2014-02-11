@@ -1,0 +1,16 @@
+UserName
+password
+<Account Number>
+
+name
+birthday
+gender
+phoneNumber
+address
+email
+
+Checking
+money
+
+Savings
+money

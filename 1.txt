@@ -1,0 +1,16 @@
+admin
+admin
+1
+
+Administrator
+01/01/0001
+M
+1231231234
+1 This Street, This City, ST, 00001
+admin@thisBank.com
+
+Checking
+0
+
+Savings
+0
