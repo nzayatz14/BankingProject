@@ -6,7 +6,9 @@
  */
 
 #include "Admin.h"
-
+#include <iostream>
+#include <sstream>
+#include <fstream>
 using namespace std;
 
 Admin::Admin() {
@@ -39,16 +41,16 @@ void Admin::viewAccountInDetail(){
 	cout << "Enter account number:"<<endl;
 	cin>>accountNumber;
 	ss<<accountNumber;
-	String acct = ss.str();
+	string acct = ss.str();
 	acct = acct + ".txt";
 
 	in.open(acct.c_str());
 	string temp;
 	while(!in.eof()){
-		getline(temp,in);
+		getline(in, temp);
 		cout<<temp<<endl;
 	}
-	in.close(acct.c_str());
+	in.close();
 
 }
 void Admin::createAccount(){
@@ -100,7 +102,7 @@ void Admin::createAccount(){
 
 	clie.setPerson(n,b,g,p,a,e,un);
 
-	Bank.createExternalAccount(clie, pass);
+	bank.createExternalAccount(clie, pass);
 }
 
 void Admin::changePassword()
@@ -113,16 +115,20 @@ void Admin::changePassword()
 	//call printOptions()
 }
 
+void Admin::deleteAccount(){
+
+}
+
 void Admin::printOptions()
 {
 	//print and number the capabilities of the administrator (create an account, delete
 	//an account, view a specific account, or change the password to an account)
 	//ask the option which the user wants to do (by number) and call the respective
 	//function
-		cout<<"Here you can do: 1. View bank 2. View number of accounts  3. View account in detail 4. Create an account 5. Delete an account 6. Change password of account 0. Exit"<<
-			"Enter the number you wish to choose: ";
-	int n;
-	while(n!=0){
+	int n = -1;
+	do{
+		cout<<"Here you can do: 1. View bank 2. View the number of accounts  3. View an account in detail 4. Create an account 5. Delete an account 6. Change password of account 0. Exit"<<
+					"Enter the number you wish to choose: ";
 		cin>>n;
 		switch(n){
 			case 1:
@@ -143,13 +149,18 @@ void Admin::printOptions()
 			case 6:
 				changePassword();
 				break;
+			case 0:
+				break;
 			default:
 				cout<<"Please enter a valid number."<<endl;
 				printOptions();
 		}
-		cout<<"Here you can do: 1. View bank 2. View number of accounts  3. View account in detail 4. Create an account 5. Delete an account 6. Change password of account 0. Exit"<<
-					"Enter the number you wish to choose: ";
-	}
+	}while (n!=0);
+
 	logout();
 }
+
+void Admin::logout(){
+
 }
+

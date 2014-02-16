@@ -28,6 +28,7 @@ public:
 	void deleteAccount();
 	void changePassword();
 	void printOptions();
+	void logout();
 
 private:
 	Bank bank;

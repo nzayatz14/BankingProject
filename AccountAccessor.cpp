@@ -21,6 +21,9 @@ AccountAccessor::~AccountAccessor() {
 
 Person* AccountAccessor::login(Person *per, ExternalAccount &e){
 	string name, pass;
+	bool success = false;
+
+	while(!success){
 		cout<<"Username: ";
 		cin>>name;
 		cout<<"Password: ";
@@ -29,23 +32,26 @@ Person* AccountAccessor::login(Person *per, ExternalAccount &e){
 		InternalAccount temp[2];
 		bank.find(name, e);
 
-		e.getInternalAccounts(temp[0],temp[1]);
+		if(e.getAccountNumber() != -1){
+			e.getInternalAccounts(temp[0],temp[1]);
+			if (pass.compare(e.getPassword()) == 0){
+				success = true;
+				if(name.compare("admin") != 0){
+					per = new Client(temp[0],temp[1]);
+					e.getAccountHolder(static_cast<Client*>(per));
+				}else{
+					per = new Admin();
+				}
 
-		//temp[0].displayInternalAccount();
-		//temp[1].displayInternalAccount();
-
-		if (pass.compare(e.getPassword()) == 0){
-
-			if(name.compare("admin") != 0){
-				per = new Client(temp[0],temp[1]);
-				e.getAccountHolder(static_cast<Client*>(per));
 			}else{
-				per = new Admin();
+				cout<<"Password is incorrect."<<endl;
 			}
-
+		}else{
+			cout<<"User name does not exist."<<endl;
 		}
+	}
 
-		return per;
+	return per;
 }
 
 }

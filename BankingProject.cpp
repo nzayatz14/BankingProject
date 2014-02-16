@@ -22,7 +22,10 @@ int main() {
 	AccountAccessor a;
 	InternalAccount temp[2];
 
+	account.setAccountNumber(-1);
+
 	person = a.login(person, account);
+	cout<<person->getAddress()<<endl;
 	person->printOptions();
 
 	free (person);

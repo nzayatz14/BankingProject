@@ -133,8 +133,11 @@ void Bank::deleteExternalAccount(string user){
 
 void Bank::find(string user, ExternalAccount &a){
 	unordered_map<string,ExternalAccount>::const_iterator found = bank.find (user);
+
+	if(found != bank.end()){
 	ExternalAccount temp = found->second;
 	temp.copyExternalAccount(a);
+	}
 
 }
 
