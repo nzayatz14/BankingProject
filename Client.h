@@ -16,10 +16,14 @@ using namespace std;
 class Client:public Person {
 public:
 	Client();//constructor
-	Client(InternalAccount &a, InternalAccount &b);
 	virtual ~Client();//destructor
+<<<<<<< HEAD
 	void getHeldAccount(InternalAccount &a, InternalAccount &b);//function returns heldAccount
 	void setHeldAccount(InternalAccount &a, InternalAccount &b);//function sets the held account
+=======
+	InternalAccount getHeldAccount();//function returns heldAccount
+	void setHeldAccount(InternalAccount &a[]);//function sets the held account
+>>>>>>> d643bf78c6c0972e5bb84d933167bdf1c8d7e158
 	void copyClient(Client &into);//function copies information from another client
 	void viewInternalAccount();//function calls displayExternalAccount()
 	void withdraw();
