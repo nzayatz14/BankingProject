@@ -35,23 +35,32 @@ void Admin::viewAccountInDetail(){
 	//if it is a valid account number, open<accountNumber.txt> read in all of
 	//the information and print it all. If its not print error and call printOptions
 	ifstream in;
+	in.open("bank.txt");
 	int accountNumber;
-	ostringstream ss;
 
+	ostringstream ss;
 	cout << "Enter account number:"<<endl;
 	cin>>accountNumber;
 	ss<<accountNumber;
-	string acct = ss.str();
+	String acct = ss.str();
 	acct = acct + ".txt";
 
-	in.open(acct.c_str());
-	string temp;
-	while(!in.eof()){
-		getline(in, temp);
-		cout<<temp<<endl;
+	try{
+		in.open(acct.c_str());
+		if(in.fail()){
+			cout<<"Account cannot be opened."<<endl;
+		}else{
+			string temp;
+			while(!in.eof()){
+				getline(temp,in);
+				cout<<temp<<endl;
+			}
+			in.close();
+		}
+	}catch (Exception ex){
+		cout<<"This account does not exist."<<endl;
 	}
 	in.close();
-
 }
 void Admin::createAccount(){
 	//ask for general information
@@ -59,6 +68,8 @@ void Admin::createAccount(){
 	//call bank.create ExternalAccount(client,password) function for bank class
 
 	Client clie;
+	InternalAccount ia;
+	InternalAccount ia2;
 
 	string firstName;
 	string lastName;
@@ -72,7 +83,6 @@ void Admin::createAccount(){
 
 	cout<<"Please enter first name of client."<< endl;
 	cin>>firstName;
-
 
 	cout<<"Please enter last name of client."<< endl;
 	cin>>lastName;
@@ -102,17 +112,47 @@ void Admin::createAccount(){
 
 	clie.setPerson(n,b,g,p,a,e,un);
 
-	bank.createExternalAccount(clie, pass);
+	ia.setAccountType("Checking");
+	ia2.setAccountType("Savings");
+
+	ia.setUsername(n);
+	ia2.setUsername(n);
+
+	clie.setHeldAccount(ia,ia2);
+
+	Bank.createExternalAccount(clie, pass);
 }
 
-void Admin::changePassword()
-{
+void Admin::changePassword(){
 	//ask for the userName of the account (check to make sure it exists and is the //correct account)
 	//ask for new password and re-entry
 	//if both entries match, find the externalAccount in the bank and set password in
 	//the temporary account to the new password
 	//set the externalAccount in the Bank equal to the temporary
-	//call printOptions()
+
+	ExternalAccount temp;
+	temp.setAccountNumber(-1);
+
+	string un;
+	string pass;
+	string pass2;
+	cout<<"Please enter the username of the account that you wish to change the password for:" << endl;
+	cin>>un;
+
+	bank.find(un, temp);
+
+	if(temp.getAccountNumber()!=-1){
+		cout<<"Please enter the new password of the account:" << endl;
+		cin>>pass;
+
+		cout<<"Please enter the password again:" << endl;
+		cin>>pass2;
+
+		if(pass.compare(pass2)==0){
+			temp.setPassword(pass);
+			bank.updateAccount(un, temp);
+		}
+	}
 }
 
 void Admin::deleteAccount(){
