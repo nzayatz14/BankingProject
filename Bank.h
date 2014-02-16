@@ -34,6 +34,7 @@ public:
 	void createExternalAccount(Client &a, string pass);
 	void deleteExternalAccount(string user);
 	void find(string user, ExternalAccount &a);
+	void updateAccount(string user, ExternalAccount &a);
 };
 
 #endif /* BANK_H_ */
