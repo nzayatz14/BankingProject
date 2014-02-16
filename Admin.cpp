@@ -59,4 +59,37 @@ void Admin::printOptions()
 	//an account, view a specific account, or change the password to an account)
 	//ask the option which the user wants to do (by number) and call the respective
 	//function
+		cout<<"Here you can do: 1. View bank 2. View number of accounts  3. View account in detail 4. Create an account 5. Delete an account 6. Change password of account 0. Exit"<<
+			"Enter the number you wish to choose: ";
+	int n;
+	while(n!=0){
+		cin>>n;
+		switch(n){
+			case 1:
+				viewBank();
+				break;
+			case 2:
+				viewAccounts();
+				break;
+			case 3:
+				viewAccountInDetail();
+				break;
+			case 4:
+				createAccount();
+				break;
+			case 5:
+				deleteAccount();
+				break;
+			case 6:
+				changePassword();
+				break;
+			default:
+				cout<<"Please enter a valid number."<<endl;
+				printOptions();
+		}
+		cout<<"Here you can do: 1. View bank 2. View number of accounts  3. View account in detail 4. Create an account 5. Delete an account 6. Change password of account 0. Exit"<<
+					"Enter the number you wish to choose: ";
+	}
+	logout();
+}
 }
