@@ -42,56 +42,70 @@ void Client::withdraw(){
 	cout<<"Please select an account you want to withdraw money from:"<<endl;
 	cout<<"\t"<<"1. Checking"<<endl;
 	cout<<"\t"<<"2. Savings"<<endl;
+	cout<<"\t"<<"0. Exit"<<endl;
 	cout<<"Please enter a number:";
 	int n;
 	cin>>n;
-	cout<<"Please enter how much you want to withdraw from your account:";
-	double m;
-	cin>>m;
-	if(heldAccount[n-1].getMoney()<m)
-		cout<<"Sorry, there is insufficient money in your account."<<endl;
-	else{
-		heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()-m);
-		viewInternalAccount();
+	if(n!=0){
+		cout<<"Please enter how much you want to withdraw from your account:";
+		double m;
+		cin>>m;
+		if(heldAccount[n-1].getMoney()<m)
+			cout<<"Sorry, there is insufficient money in your account."<<endl;
+		else
+			heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()-m);
 	}
+	else
+		cout<<"Operation quits."<<endl;
+	viewInternalAccount();
 }
 void Client::deposit(){
 	cout<<"Please select an account you want to deposit money into:"<<endl;
 	cout<<"\t"<<"1. Checking"<<endl;
 	cout<<"\t"<<"2. Savings"<<endl;
+	cout<<"\t"<<"0. Exit"<<endl;
 	cout<<"Please enter a number:";
 	int n;
 	cin>>n;
-	cout<<"Please enter how much you want to deposit into the account:";
-	double m;
-	cin>>m;
-	heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()+m);
+	if(n!=0){
+		cout<<"Please enter how much you want to deposit into the account:";
+		double m;
+		cin>>m;
+		heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()+m);
+	}
+	else
+		cout<<"Operation quits."<<endl;
 	viewInternalAccount();
 }
 void Client::transfer(){
 	cout<<"Please select an account you want to withdraw money from:"<<endl;
 	cout<<"\t"<<"1. Checking"<<endl;
 	cout<<"\t"<<"2. Savings"<<endl;
+	cout<<"\t"<<"0. Exit"<<endl;
 	cout<<"Please enter a number:";
 	int n;
 	cin>>n;
-	cout<<"Please enter how much you want to transfer:";
-	double m;
-	cin>>m;
-	if(heldAccount[n-1].getMoney()<m)
-		cout<<"Sorry, the balance in your account is sufficient."<<endl;
-	else{
-		heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()-m);
-		switch(n-1){
-		case 0:
-			heldAccount[1].setMoney(heldAccount[n-1].getMoney()+m);
-			break;
-		case 1:
-			heldAccount[0].setMoney(heldAccount[n-1].getMoney()+m);
-			break;
-		default:
+	if(n!=0){
+		cout<<"Please enter how much you want to transfer:";
+		double m;
+		cin>>m;
+		if(heldAccount[n-1].getMoney()<m)
+			cout<<"Sorry, the balance in your account is sufficient."<<endl;
+		else{
+			heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()-m);
+			switch(n-1){
+			case 0:
+				heldAccount[1].setMoney(heldAccount[n-1].getMoney()+m);
+				break;
+			case 1:
+				heldAccount[0].setMoney(heldAccount[n-1].getMoney()+m);
+				break;
+			default:
+			}
 		}
 	}
+	else
+		cout<<"Operation quits."<<endl;
 	viewInternalAccount();
 }
 void Client::printOptions(){
