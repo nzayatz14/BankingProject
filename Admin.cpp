@@ -156,7 +156,15 @@ void Admin::changePassword(){
 }
 
 void Admin::deleteAccount(){
+	//ask which account should be deleted (by username)
+	//call bank.deleteExternalAccount(username) from the bank
+	//call printOptions()
 
+	int un;
+	cout<<"Please enter the user name of the account you wish to delete:" << endl;
+	cin>>un;
+
+	bank.deleteExternalAccount(un);
 }
 
 void Admin::printOptions()
