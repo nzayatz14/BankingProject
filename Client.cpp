@@ -12,21 +12,21 @@ using namespace std;
 
 Client::Client() {
 	// TODO Auto-generated constructor stub
+	heldAccount=new InternalAccount;
 }
 
 Client::~Client() {
 	// TODO Auto-generated destructor stub
-	//delete [] heldAccount;
+	delete [] heldAccount;
 }
 
-void Client::setHeldAccount(InternalAccount (&a)[2]){
-	a[0].copyInternalAccount(heldAccount[0]);
-	a[1].copyInternalAccount(heldAccount[1]);
+void Client::setHeldAccount(InternalAccount& a[]){
+	a[0] = heldAccount[0];
+	a[1] = heldAccount[1];
 }
 
-void Client::getHeldAccount(InternalAccount (&a)[]){
-	heldAccount[0].copyInternalAccount(a[0]);
-	heldAccount[1].copyInternalAccount(a[1]);
+InternalAccount Client::getHeldAccount(){
+	return heldAccount;
 }
 
 void Client::copyClient(Client &into){
@@ -52,10 +52,9 @@ void Client::withdraw(){
 		heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()-m);
 		viewInternalAccount();
 	}
-	printOptions();
 }
 void Client::deposit(){
-	cout<<"Please select an account you want to deposit money to:"<<
+	cout<<"Please select an account you want to withdraw money from:"<<
 			"1.checking 2.saving"<<" Please enter a number:";
 	int n;
 	cin>>n;
@@ -64,10 +63,9 @@ void Client::deposit(){
 	cin>>m;
 	heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()+m);
 	viewInternalAccount();
-	printOptions();
 }
 void Client::transfer(){
-	cout<<"Please select an account you want to transfer money from:"<<
+	cout<<"Please select an account you want to withdraw money from:"<<
 			"1.checking 2.saving"<<" Please enter a number:";
 	int n;
 	cin>>n;
@@ -75,7 +73,7 @@ void Client::transfer(){
 	double m;
 	cin>>m;
 	if(heldAccount[n-1].getMoney()<m)
-		cout<<"Sorry, the balance in your account is insufficient."<<endl;
+		cout<<"Sorry, the balance in your account is sufficient."<<endl;
 	else{
 		heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()-m);
 		switch(n-1){
@@ -86,31 +84,39 @@ void Client::transfer(){
 			heldAccount[0].setMoney(heldAccount[n-1].getMoney()+m);
 			break;
 		default:
-			cout<<"Neither Account"<<endl;
-			break;
 		}
 	}
 	viewInternalAccount();
-	printOptions();
 }
 void Client::printOptions(){
-	cout<<"Here you can do: 1.Withdrawal 2.Deposit 3.Transfer. "<<
+	cout<<"Here you can do: 1.Withdrawal 2.deposit 3.transfer 0.Exit. "<<
 			"Enter the number to keep running: ";
 	int n;
 	cin>>n;
-	switch(n){
-		case 1:
-			withdraw();
-			break;
-		case 2:
-			deposit();
-			break;
-		case 3:
-			transfer();
-			break;
-		default:
-			cout<<"Please enter a valid number."<<endl;
-			printOptions();
+	while(n!=0){
+		switch(n){
+			case 1:
+				withdraw();
+				break;
+			case 2:
+				deposit();
+				break;
+			case 3:
+				transfer();
+				break;
+			default:
+				cout<<"Please enter a valid number."<<endl;
+		}
+		cout<<"Here you can do: 1.Withdrawal 2.deposit 3.transfer 0.Exit. "<<
+					"Enter the number to keep running: ";
+		int n;
+		cin>>n;
 	}
+	logout();
+}
+
+void Client::logout(){
+
+
 }
 
