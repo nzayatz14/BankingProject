@@ -39,8 +39,10 @@ void Client::viewInternalAccount(){
 }
 
 void Client::withdraw(){
-	cout<<"Please select an account you want to withdraw money from:"<<
-			"1.checking 2.saving"<<" Please enter a number:";
+	cout<<"Please select an account you want to withdraw money from:"<<endl;
+	cout<<"\t"<<"1.checking"<<endl;
+	cout<<"\t"<<"2.saving"<<endl;
+	cout<<"Please enter a number:";
 	int n;
 	cin>>n;
 	cout<<"Please enter how much you want to withdraw from your account:";
@@ -54,8 +56,10 @@ void Client::withdraw(){
 	}
 }
 void Client::deposit(){
-	cout<<"Please select an account you want to withdraw money from:"<<
-			"1.checking 2.saving"<<" Please enter a number:";
+	cout<<"Please select an account you want to deposit money into:"<<endl;
+	cout<<"\t"<<"1.checking"<<endl;
+	cout<<"\t"<<"2.saving"<<endl;
+	cout<<"Please enter a number:";
 	int n;
 	cin>>n;
 	cout<<"Please enter how much you want to deposit into the account:";
@@ -65,8 +69,10 @@ void Client::deposit(){
 	viewInternalAccount();
 }
 void Client::transfer(){
-	cout<<"Please select an account you want to withdraw money from:"<<
-			"1.checking 2.saving"<<" Please enter a number:";
+	cout<<"Please select an account you want to withdraw money from:"<<endl;
+	cout<<"\t"<<"1.checking"<<endl;
+	cout<<"\t"<<"2.saving"<<endl;
+	cout<<"Please enter a number:";
 	int n;
 	cin>>n;
 	cout<<"Please enter how much you want to transfer:";
@@ -89,8 +95,12 @@ void Client::transfer(){
 	viewInternalAccount();
 }
 void Client::printOptions(){
-	cout<<"Here you can do: 1.Withdrawal 2.deposit 3.transfer 0.Exit. "<<
-			"Enter the number to keep running: ";
+	cout<<"Here you can do:"<<endl;
+	cout<<"\t"<<"1.withdrawel"<<endl;
+	cout<<"\t"<<"2.deposit"<<endl;
+	cout<<"\t"<<"3.transfer"<<endl;
+	cout<<"\t"<<"0.Exit"<<endl;
+	cout<<"Enter a number to keep running:";
 	int n;
 	cin>>n;
 	while(n!=0){
@@ -107,8 +117,11 @@ void Client::printOptions(){
 			default:
 				cout<<"Please enter a valid number."<<endl;
 		}
-		cout<<"Here you can do: 1.Withdrawal 2.deposit 3.transfer 0.Exit. "<<
-					"Enter the number to keep running: ";
+		cout<<"Here you can do:"<<endl;
+			cout<<"\t"<<"2.deposit"<<endl;
+			cout<<"\t"<<"3.transfer"<<endl;
+			cout<<"\t"<<"0.Exit"<<endl;
+			cout<<"Enter a number to keep running:";
 		int n;
 		cin>>n;
 	}
