@@ -87,6 +87,7 @@ void Person::setUserName(string un)
 	userName = un;
 }
 
+<<<<<<< HEAD
 void Person::setPerson(string n, string b, char g, string p, string a, string e, string un)
 {
 	name = n;
@@ -104,4 +105,26 @@ void Person::displayPersonalInformation()
 	n=Person.getName();
 	cout<<n;
 	*/
+=======
+void Person::setPerson(string n, string b, char g, string p, string a, string e, string un){
+
+	void setName(string);
+	void setBirthday(string);
+	void setGender(char);
+	void setPhoneNumber(string);
+	void setAddress(string);
+	void setEmail(string);
+	void setUserName(string);
+}
+
+void Person::displayPersonalInformation(){
+
+	cout<<Person.getName()<<endl;
+	cout<<Person.getBirthday()<<endl;
+	cout<<Person.getGender()<<endl;
+	cout<<Person.getPhoneNumber()<<endl;
+	cout<<Person.getAddress()<<endl;
+	cout<<Person.getEmail()<<endl;
+	cout<<Person.getUsername()<<endl;
+>>>>>>> 34ccad84ec6ba7d37c82bd1aedd71dcb34d7e832
 }
