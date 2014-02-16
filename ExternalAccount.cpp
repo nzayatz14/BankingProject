@@ -63,6 +63,10 @@ void ExternalAccount::copyExternalAccount(ExternalAccount &e){
 	e.setPassword(password);
 }
 
+int ExternalAccount::getAccountNumber(){
+	return accountNumber;
+}
+
 ExternalAccount::~ExternalAccount() {
 }
 

@@ -53,7 +53,5 @@ string InternalAccount::getUsername(){
 }//end username
 
 void InternalAccount::displayInternalAccount(){
-	cout<<"Your account username is:"<<username<<endl;
-	cout<<"Your account type is:"<<accountType<<endl;
-	cout<<"Your money in your account is:"<<money<<endl;
+	cout<<accountType<<":"<<endl<<"$"<<money<<endl;
 }//end displayInteralAccount

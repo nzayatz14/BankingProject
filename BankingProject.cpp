@@ -18,9 +18,11 @@ using namespace std;
 
 int main() {
 	Person *person;
+	ExternalAccount account;
 	AccountAccessor a;
+	InternalAccount temp[2];
 
-	a.login(person);
+	person = a.login(person, account);
 	person->printOptions();
 
 	free (person);

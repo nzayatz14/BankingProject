@@ -11,7 +11,12 @@
 using namespace std;
 
 Client::Client() {
-	// TODO Auto-generated constructor stub
+
+}
+
+Client::Client(InternalAccount &a, InternalAccount &b){
+	a.copyInternalAccount(heldAccount[0]);
+	b.copyInternalAccount(heldAccount[1]);
 }
 
 Client::~Client() {
@@ -19,18 +24,19 @@ Client::~Client() {
 	//delete [] heldAccount;
 }
 
-void Client::setHeldAccount(InternalAccount (&a)[2]){
-	a[0].copyInternalAccount(heldAccount[0]);
-	a[1].copyInternalAccount(heldAccount[1]);
+void Client::setHeldAccount(InternalAccount &a,InternalAccount &b){
+	a.copyInternalAccount(heldAccount[0]);
+	b.copyInternalAccount(heldAccount[1]);
 }
 
-void Client::getHeldAccount(InternalAccount (&a)[]){
-	heldAccount[0].copyInternalAccount(a[0]);
-	heldAccount[1].copyInternalAccount(a[1]);
+void Client::getHeldAccount(InternalAccount &a,InternalAccount &b){
+	heldAccount[0].copyInternalAccount(a);
+	heldAccount[1].copyInternalAccount(b);
 }
 
 void Client::copyClient(Client &into){
-	into.setHeldAccount(heldAccount);
+	into.setHeldAccount(heldAccount[0],heldAccount[1]);
+	into.setPerson(name, birthday, gender, phoneNumber, address, email, userName);
 }
 
 void Client::viewInternalAccount(){
@@ -39,8 +45,12 @@ void Client::viewInternalAccount(){
 }
 
 void Client::withdraw(){
-	cout<<"Please select an account you want to withdraw money from:"<<
-			"1.checking 2.saving"<<" Please enter a number:";
+	heldAccount[0].displayInternalAccount();
+	heldAccount[1].displayInternalAccount();
+	cout<<"Please select an account you want to withdraw money from:"
+			<<endl<<"1. Checking"
+			<<endl<<"2. Saving"
+			<<endl<<"Please enter a number:";
 	int n;
 	cin>>n;
 	cout<<"Please enter how much you want to withdraw from your account:";
@@ -52,11 +62,14 @@ void Client::withdraw(){
 		heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()-m);
 		viewInternalAccount();
 	}
-	printOptions();
 }
 void Client::deposit(){
-	cout<<"Please select an account you want to deposit money to:"<<
-			"1.checking 2.saving"<<" Please enter a number:";
+	heldAccount[0].displayInternalAccount();
+	heldAccount[1].displayInternalAccount();
+	cout<<"Please select an account you want to deposit money to:"
+			<<endl<<"1. Checking"
+			<<endl<<"2. Savings"
+			<<endl<<"Please enter a number:";
 	int n;
 	cin>>n;
 	cout<<"Please enter how much you want to deposit into the account:";
@@ -64,18 +77,23 @@ void Client::deposit(){
 	cin>>m;
 	heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()+m);
 	viewInternalAccount();
-	printOptions();
 }
 void Client::transfer(){
-	cout<<"Please select an account you want to transfer money from:"<<
-			"1.checking 2.saving"<<" Please enter a number:";
+	heldAccount[0].displayInternalAccount();
+	heldAccount[1].displayInternalAccount();
+	cout<<"Please select an account you want to transfer money from:"
+			<<endl<<"1. Checking"
+			<<endl<<"2. Savings"
+			<<endl<<"Please enter a number:";
 	int n;
 	cin>>n;
+
 	cout<<"Please enter how much you want to transfer:";
 	double m;
 	cin>>m;
+
 	if(heldAccount[n-1].getMoney()<m)
-		cout<<"Sorry, the balance in your account is insufficient."<<endl;
+		cout<<"Sorry, the balance in this account is insufficient."<<endl;
 	else{
 		heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()-m);
 		switch(n-1){
@@ -91,14 +109,23 @@ void Client::transfer(){
 		}
 	}
 	viewInternalAccount();
-	printOptions();
 }
+
 void Client::printOptions(){
-	cout<<"Here you can do: 1.Withdrawal 2.Deposit 3.Transfer. "<<
-			"Enter the number to keep running: ";
+	heldAccount[0].displayInternalAccount();
+	heldAccount[1].displayInternalAccount();
 	int n;
-	cin>>n;
-	switch(n){
+	do{
+		cout<<"Here you can do:"<<endl;
+		cout<<"\t"<<"1.Withdrawal"<<endl;
+		cout<<"\t"<<"2.Deposit"<<endl;
+		cout<<"\t"<<"3.Transfer"<<endl;
+		cout<<"\t"<<"0.Exit"<<endl;
+		cout<<"Enter a number to keep running:";
+
+		cin>>n;
+
+		switch(n){
 		case 1:
 			withdraw();
 			break;
@@ -108,9 +135,17 @@ void Client::printOptions(){
 		case 3:
 			transfer();
 			break;
+		case 0:
+			break;
 		default:
 			cout<<"Please enter a valid number."<<endl;
-			printOptions();
-	}
+		}
+	}while(n!=0);
+
+	logout();
 }
 
+void Client::logout(){
+
+
+}

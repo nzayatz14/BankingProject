@@ -10,8 +10,7 @@
 using namespace std;
 
 Person::Person() {
-	// TODO Auto-generated constructor stub
-
+	setPerson("name", "birthday", 'G', "phone", "address", "email", "user");
 }
 
 Person::~Person() {
@@ -88,20 +87,21 @@ void Person::setUserName(string un)
 	userName = un;
 }
 
-void setPerson(string n, string b, char g, string p, string a, string e, string un)
+void Person::setPerson(string n, string b, char g, string p, string a, string e, string un)
 {
-
+	name = n;
+	birthday = b;
+	gender = g;
+	phoneNumber = p;
+	address = a;
+	email = e;
+	userName = un;
 }
 
-void displayPersonalInformation()
+void Person::displayPersonalInformation()
 {
 	/*string n;
 	n=Person.getName();
 	cout<<n;
 	*/
-}
-
-void printOptions()
-{
-
 }

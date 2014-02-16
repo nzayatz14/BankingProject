@@ -25,7 +25,7 @@ public:
 	AccountAccessor();
 	virtual ~AccountAccessor();
 
-	void login(Person *per);
+	Person* login(Person* per, ExternalAccount &e);
 };
 
 }

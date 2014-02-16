@@ -16,9 +16,10 @@ using namespace std;
 class Client:public Person {
 public:
 	Client();//constructor
+	Client(InternalAccount &a, InternalAccount &b);
 	virtual ~Client();//destructor
-	void getHeldAccount(InternalAccount (&a)[]);//function returns heldAccount
-	void setHeldAccount(InternalAccount (&a)[2]);//function sets the held account
+	void getHeldAccount(InternalAccount &a, InternalAccount &b);//function returns heldAccount
+	void setHeldAccount(InternalAccount &a, InternalAccount &b);//function sets the held account
 	void copyClient(Client &into);//function copies information from another client
 	void viewInternalAccount();//function calls displayExternalAccount()
 	void withdraw();
@@ -44,6 +45,8 @@ public:
 	//withdrawal, deposit of transfer)
 	//ask the option which the user wants to do(by number)and call
 	//the respective function
+
+	void logout();
 
 protected:
 	InternalAccount heldAccount[2];

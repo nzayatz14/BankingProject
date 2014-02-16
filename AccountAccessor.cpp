@@ -19,27 +19,33 @@ AccountAccessor::~AccountAccessor() {
 	// TODO Auto-generated destructor stub
 }
 
-void AccountAccessor::login(Person *per){
+Person* AccountAccessor::login(Person *per, ExternalAccount &e){
 	string name, pass;
-	cout<<"Username: ";
-	cin>>name;
-	cout<<"Password: ";
-	cin>>pass;
+		cout<<"Username: ";
+		cin>>name;
+		cout<<"Password: ";
+		cin>>pass;
 
-	ExternalAccount temp;
+		InternalAccount temp[2];
+		bank.find(name, e);
 
-	bank.find(name, temp);
+		e.getInternalAccounts(temp[0],temp[1]);
 
-	if (pass.compare(temp.getPassword()) == 0){
+		//temp[0].displayInternalAccount();
+		//temp[1].displayInternalAccount();
 
-		if(name.compare("admin") != 0){
-			per = new Client();
-			temp.getAccountHolder(static_cast<Client*>(per));
-		}else{
-			per = new Admin();
+		if (pass.compare(e.getPassword()) == 0){
+
+			if(name.compare("admin") != 0){
+				per = new Client(temp[0],temp[1]);
+				e.getAccountHolder(static_cast<Client*>(per));
+			}else{
+				per = new Admin();
+			}
+
 		}
 
-	}
+		return per;
 }
 
 }

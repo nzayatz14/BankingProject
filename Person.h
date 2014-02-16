@@ -33,7 +33,7 @@ public:
 
 	virtual void printOptions() = 0;
 
-private:
+protected:
 	string name;
 	string birthday;
 	char gender;
