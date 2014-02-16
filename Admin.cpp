@@ -28,19 +28,79 @@ void Admin::viewAccounts()
 	cout<<bank.getTotalAccounts()<<endl;
 }
 
-void Admin::viewAccountInDetail()
-{
+void Admin::viewAccountInDetail(){
 	// ask for the account number of the account that the user wishes to view
 	//if it is a valid account number, open<accountNumber.txt> read in all of
 	//the information and print it all. If its not print error and call printOptions
+	ifstream in;
+	int accountNumber;
+	ostringstream ss;
+
+	cout << "Enter account number:"<<endl;
+	cin>>accountNumber;
+	ss<<accountNumber;
+	String acct = ss.str();
+	acct = acct + ".txt";
+
+	in.open(acct.c_str());
+	string temp;
+	while(!in.eof()){
+		getline(temp,in);
+		cout<<temp<<endl;
+	}
+	in.close(acct.c_str());
 
 }
-void Admin::createAccount()
-{
+void Admin::createAccount(){
 	//ask for general information
 	//create client object from entered info
 	//call bank.create ExternalAccount(client,password) function for bank class
-	//call print options
+
+	Client clie;
+
+	string firstName;
+	string lastName;
+	string b;
+	char g;
+	string p;
+	string a;
+	string e;
+	string un;
+	string pass;
+
+	cout<<"Please enter first name of client."<< endl;
+	cin>>firstName;
+
+
+	cout<<"Please enter last name of client."<< endl;
+	cin>>lastName;
+
+	string n = firstName + lastName;
+
+	cout<<"Please enter birthday of client."<< endl;
+	cin>>b;
+
+	cout<<"Please enter gender of client."<< endl;
+	cin>>g;
+
+	cout<<"Please enter in phone number of client"<< endl;
+	cin>>p;
+
+	cout<<"Please enter in address of client"<< endl;
+	cin>>a;
+
+	cout<<"Please enter in email of client"<< endl;
+	cin>>e;
+
+	cout<<"Please enter in username of client"<< endl;
+	cin>>un;
+
+	cout<<"Please enter in a password"<< endl;
+	cin>>pass;
+
+	clie.setPerson(n,b,g,p,a,e,un);
+
+	Bank.createExternalAccount(clie, pass);
 }
 
 void Admin::changePassword()
