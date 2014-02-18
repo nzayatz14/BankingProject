@@ -35,6 +35,7 @@ public:
 	void deleteExternalAccount(string user);
 	void find(string user, ExternalAccount &a);
 	void updateAccount(string user, ExternalAccount &a);
+	void logout();
 };
 
 #endif /* BANK_H_ */
