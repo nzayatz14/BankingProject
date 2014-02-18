@@ -162,7 +162,8 @@ void Admin::printOptions()
 	logout();
 }
 
-void Admin::logout(){
-
+void Admin::logout()
+{
+	Bank::logout();
 }
 
