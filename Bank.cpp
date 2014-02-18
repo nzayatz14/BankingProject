@@ -150,3 +150,8 @@ void Bank::find(string user, ExternalAccount &a){
 void Bank::updateAccount(string user, ExternalAccount &a){
 	bank[user] = a;
 }
+
+void Bank::logout()
+{
+	
+}
