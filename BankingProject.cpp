@@ -25,7 +25,12 @@ int main() {
 	account.setAccountNumber(-1);
 
 	person = a.login(person, account);
-	//cout<<person->getAddress()<<endl;
+	account.getInternalAccounts(temp[0],temp[1]);
+
+	if(person->getUserName().compare("admin") !=0){
+		(static_cast<Client*>(person))->setHeldAccount(temp[0],temp[1]);
+	}
+
 	person->printOptions();
 
 	free (person);

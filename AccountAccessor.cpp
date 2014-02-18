@@ -37,7 +37,7 @@ Person* AccountAccessor::login(Person *per, ExternalAccount &e){
 			if (pass.compare(e.getPassword()) == 0){
 				success = true;
 				if(name.compare("admin") != 0){
-					per = new Client(temp[0],temp[1]);
+					per = new Client();
 					e.getAccountHolder(static_cast<Client*>(per));
 				}else{
 					per = new Admin();
