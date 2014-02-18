@@ -27,7 +27,7 @@ void Admin::viewBank()
 
 void Admin::viewAccounts()
 {
-	cout<<bank.getTotalAccounts()<<endl;
+	cout<<"\nTotal number of accounts: "<<bank.getTotalAccounts()<<endl<<endl;
 }
 
 void Admin::viewAccountInDetail(){
@@ -60,6 +60,7 @@ void Admin::viewAccountInDetail(){
 	}catch (Exception ex){
 		cout<<"This account does not exist."<<endl;
 	}
+	cout<<"\n";
 	in.close();
 }
 void Admin::createAccount(){
@@ -87,7 +88,7 @@ void Admin::createAccount(){
 	cout<<"Please enter last name of client."<< endl;
 	cin>>lastName;
 
-	string n = firstName + lastName;
+	string n = firstName + " "+lastName;
 
 	cout<<"Please enter birthday of client."<< endl;
 	cin>>b;
@@ -97,9 +98,10 @@ void Admin::createAccount(){
 
 	cout<<"Please enter in phone number of client"<< endl;
 	cin>>p;
+	getline(cin, a);
 
-	cout<<"Please enter in address of client"<< endl;
-	cin>>a;
+	cout<<"Please enter in address of client:\n";
+	getline(cin, a);
 
 	cout<<"Please enter in email of client"<< endl;
 	cin>>e;
@@ -175,8 +177,8 @@ void Admin::printOptions()
 	//function
 	int n = -1;
 	do{
-		cout<<"Here you can do: 1. View bank 2. View the number of accounts  3. View an account in detail 4. Create an account 5. Delete an account 6. Change password of account 0. Exit"<<
-					"Enter the number you wish to choose: ";
+		cout<<"Here you can do: \n1. View bank  \n2. View the number of accounts  \n3. View an account in detail \n4. Create an account \n5. Delete an account \n6. Change password of account \n0. Exit"<<
+					"\nEnter the number you wish to choose: ";
 		cin>>n;
 		switch(n){
 			case 1:

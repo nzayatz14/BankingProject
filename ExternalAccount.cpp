@@ -12,6 +12,7 @@ namespace std {
 ExternalAccount::ExternalAccount() {
 	password = "password";
 	createInternalAccounts();
+	accountNumber = 0;
 
 }
 

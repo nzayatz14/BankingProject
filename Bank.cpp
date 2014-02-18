@@ -15,8 +15,9 @@ Bank::Bank() {
 	in.open("bank.txt");
 	string user, pass;
 	int accountNumber;
+	totalAccounts=0;
 
-	getline(in, user);
+	//getline(in, user);
 	while(!in.eof()){
 		in>>user;
 		in>>pass;
@@ -89,6 +90,7 @@ Bank::Bank() {
 		//create externalAccount and Person and internalAccounts based on data
 
 		bank.insert(make_pair<string,ExternalAccount>(user, temp));
+		totalAccounts++;
 	}
 
 	in.close();
@@ -107,13 +109,15 @@ void Bank::setTotalAccounts(int g){
 }
 
 void Bank::printBank(){
+	cout<<"\nUsername:\tPassword:\tAccount Number:"<<endl;
 	for(auto i = bank.begin(); i!=bank.end();i++){
 		ExternalAccount temp = i->second;
 		Client *c;
 		temp.getAccountHolder(c);
 		string userName = i->first;
-		cout<< userName<<" "<< temp.getPassword()<<" "<< temp.getAccountNumber()<<endl;
+		cout<< userName<<"\t"<< temp.getPassword()<<"\t"<< temp.getAccountNumber()<<endl;
 	}
+	cout<<"\n";
 }
 
 void Bank::createExternalAccount(Client &a, string pass){
@@ -122,8 +126,10 @@ void Bank::createExternalAccount(Client &a, string pass){
 	n.setPassword(pass);
 	n.createInternalAccounts();
 	string user = a.getUserName();
-	bank.insert(make_pair<string,ExternalAccount>(user, n));
 	totalAccounts++;
+	n.setAccountNumber(totalAccounts);
+	bank.insert(make_pair<string,ExternalAccount>(user, n));
+
 }
 
 void Bank::deleteExternalAccount(string user){

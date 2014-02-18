@@ -25,7 +25,7 @@ int main() {
 	account.setAccountNumber(-1);
 
 	person = a.login(person, account);
-	cout<<person->getAddress()<<endl;
+	//cout<<person->getAddress()<<endl;
 	person->printOptions();
 
 	free (person);
