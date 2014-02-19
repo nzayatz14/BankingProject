@@ -19,7 +19,6 @@ using namespace std;
 class Admin: public Person {
 public:
 	Admin();
-	Admin(Bank b);
 	virtual ~Admin();
 	void viewBank();
 	void viewAccounts();
@@ -29,6 +28,7 @@ public:
 	void changePassword();
 	void printOptions();
 	void logout();
+	void setBank(Bank &b);
 
 private:
 	Bank bank;

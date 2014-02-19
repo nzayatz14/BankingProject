@@ -17,11 +17,10 @@
 #include "InternalAccount.h"
 
 using namespace std;
-typedef unordered_map<string ,ExternalAccount> Accounts;
 
 class Bank {
 private:
-	Accounts bank;
+	unordered_map<string ,ExternalAccount> bank;
 	int totalAccounts;
 public:
 	Bank();

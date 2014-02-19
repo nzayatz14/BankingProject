@@ -83,14 +83,12 @@ Bank::Bank() {
 			temp.setInternalAccounts(accounts[0],accounts[1]);
 		}
 
-
-
 		acct.close();
 
 		//create externalAccount and Person and internalAccounts based on data
 
 		bank.insert(make_pair<string,ExternalAccount>(user, temp));
-		totalAccounts++;
+		totalAccounts = bank.size();
 	}
 
 	in.close();
@@ -110,11 +108,11 @@ void Bank::setTotalAccounts(int g){
 
 void Bank::printBank(){
 	cout<<"\nUsername:\tPassword:\tAccount Number:"<<endl;
-	for(auto i = bank.begin(); i!=bank.end();i++){
-		ExternalAccount temp = i->second;
+	for(auto &i : bank){
+		ExternalAccount temp = i.second;
 		Client *c;
 		temp.getAccountHolder(c);
-		string userName = i->first;
+		string userName = i.first;
 		cout<< userName<<"\t"<< temp.getPassword()<<"\t"<< temp.getAccountNumber()<<endl;
 	}
 	cout<<"\n";
@@ -128,7 +126,10 @@ void Bank::createExternalAccount(Client &a, string pass){
 	string user = a.getUserName();
 	totalAccounts++;
 	n.setAccountNumber(totalAccounts);
+	cout<<user<<" ";
+	n.displayExternalAccount();
 	bank.insert(make_pair<string,ExternalAccount>(user, n));
+	cout<<"insert"<<endl;
 
 }
 
@@ -139,7 +140,6 @@ void Bank::deleteExternalAccount(string user){
 
 void Bank::find(string user, ExternalAccount &a){
 	unordered_map<string,ExternalAccount>::const_iterator found = bank.find (user);
-
 	if(found != bank.end()){
 	ExternalAccount temp = found->second;
 	temp.copyExternalAccount(a);

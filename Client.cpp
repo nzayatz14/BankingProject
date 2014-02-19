@@ -103,10 +103,10 @@ void Client::transfer(){
 		heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()-m);
 		switch(n-1){
 		case 0:
-			heldAccount[1].setMoney(heldAccount[n-1].getMoney()+m);
+			heldAccount[1].setMoney(heldAccount[1].getMoney()+m);
 			break;
 		case 1:
-			heldAccount[0].setMoney(heldAccount[n-1].getMoney()+m);
+			heldAccount[0].setMoney(heldAccount[0].getMoney()+m);
 			break;
 		default:
 			break;

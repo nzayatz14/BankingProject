@@ -13,7 +13,7 @@ using namespace std;
 
 Admin::Admin() {
 	// TODO Auto-generated constructor stub
-
+	userName = "admin";
 }
 
 Admin::~Admin() {
@@ -34,7 +34,7 @@ void Admin::viewAccountInDetail(){
 	// ask for the account number of the account that the user wishes to view
 	//if it is a valid account number, open<accountNumber.txt> read in all of
 	//the information and print it all. If its not print error and call printOptions
-	ifstream in;
+	/*ifstream in;
 	int accountNumber;
 	ostringstream ss;
 
@@ -51,7 +51,40 @@ void Admin::viewAccountInDetail(){
 		cout<<temp<<endl;
 	}
 	cout<<"\n";
-	in.close();
+	in.close();*/
+
+	string user;
+	cout<<"Enter User Name: ";
+	cin>>user;
+
+	ExternalAccount ext;
+	ext.displayExternalAccount();
+	bank.find(user, ext);
+	ext.displayExternalAccount();
+	Client c;
+	Client *cPtr = &c;
+	InternalAccount t[2];
+
+	c.displayPersonalInformation();
+	ext.getAccountHolder(cPtr);
+	c.displayPersonalInformation();
+
+	cout<<c.getUserName()<<endl;
+	cout<<ext.getPassword()<<endl<<endl;
+	cout<<c.getName()<<endl;
+	cout<<c.getBirthday()<<endl;
+	cout<<c.getGender()<<endl;
+	cout<<c.getPhoneNumber()<<endl;
+	cout<<c.getAddress()<<endl;
+	cout<<c.getEmail()<<endl<<endl;
+
+	ext.getInternalAccounts(t[0],t[1]);
+
+	t[0].displayInternalAccount();
+	cout<<endl;
+	t[1].displayInternalAccount();
+	cout<<endl;
+
 
 }
 void Admin::createAccount(){
@@ -196,4 +229,3 @@ void Admin::logout()
 {
 	Bank::logout();
 }
-
