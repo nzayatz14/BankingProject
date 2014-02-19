@@ -103,5 +103,12 @@ void Person::displayPersonalInformation()
 	/*string n;
 	n=Person.getName();
 	cout<<n;
-	*/
+	 */
+
+	cout<<name<<endl;
+	cout<<birthday<<endl;
+	cout<<gender<<endl;
+	cout<<phoneNumber<<endl;
+	cout<<address<<endl;
+	cout<<email<<endl;
 }

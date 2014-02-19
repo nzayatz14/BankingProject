@@ -58,25 +58,17 @@ void Admin::viewAccountInDetail(){
 	cin>>user;
 
 	ExternalAccount ext;
-	ext.displayExternalAccount();
 	bank.find(user, ext);
-	ext.displayExternalAccount();
 	Client c;
 	Client *cPtr = &c;
 	InternalAccount t[2];
 
-	c.displayPersonalInformation();
 	ext.getAccountHolder(cPtr);
-	c.displayPersonalInformation();
 
-	cout<<c.getUserName()<<endl;
+	cout<<endl<<c.getUserName()<<endl;
 	cout<<ext.getPassword()<<endl<<endl;
-	cout<<c.getName()<<endl;
-	cout<<c.getBirthday()<<endl;
-	cout<<c.getGender()<<endl;
-	cout<<c.getPhoneNumber()<<endl;
-	cout<<c.getAddress()<<endl;
-	cout<<c.getEmail()<<endl<<endl;
+	c.displayPersonalInformation();
+	cout<<endl;
 
 	ext.getInternalAccounts(t[0],t[1]);
 
@@ -140,48 +132,18 @@ void Admin::createAccount(){
 	bank.createExternalAccount(clie, pass);
 }
 
-void Admin::changePassword(){
+void Admin::changePassword()
+{
 	//ask for the userName of the account (check to make sure it exists and is the //correct account)
 	//ask for new password and re-entry
 	//if both entries match, find the externalAccount in the bank and set password in
 	//the temporary account to the new password
 	//set the externalAccount in the Bank equal to the temporary
-
-	ExternalAccount temp;
-	temp.setAccountNumber(-1);
-
-	string un;
-	string pass;
-	string pass2;
-	cout<<"Please enter the username of the account that you wish to change the password for:" << endl;
-	cin>>un;
-
-	bank.find(un, temp);
-
-	if(temp.getAccountNumber()!=-1){
-		cout<<"Please enter the new password of the account:" << endl;
-		cin>>pass;
-
-		cout<<"Please enter the password again:" << endl;
-		cin>>pass2;
-
-		if(pass.compare(pass2)==0){
-			temp.setPassword(pass);
-			bank.updateAccount(un, temp);
-		}
-	}
+	//call printOptions()
 }
 
 void Admin::deleteAccount(){
-	//ask which account should be deleted (by username)
-	//call bank.deleteExternalAccount(username) from the bank
-	//call printOptions()
 
-	int un;
-	cout<<"Please enter the user name of the account you wish to delete:" << endl;
-	cin>>un;
-
-	bank.deleteExternalAccount(un);
 }
 
 void Admin::printOptions()
@@ -225,7 +187,6 @@ void Admin::printOptions()
 	logout();
 }
 
-void Admin::logout()
-{
-	Bank::logout();
+void Admin::logout(){
+
 }
