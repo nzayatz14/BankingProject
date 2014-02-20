@@ -151,7 +151,6 @@ void Bank::updateAccount(string user, ExternalAccount &a){
 	bank[user] = a;
 }
 
-void Bank::logout()
-{
-	
+void Bank::logout(){
+
 }

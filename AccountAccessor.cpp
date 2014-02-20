@@ -47,7 +47,7 @@ Person* AccountAccessor::login(Person *per, ExternalAccount &e){
 				cout<<"Password is incorrect."<<endl;
 			}
 		}else{
-			cout<<"User name does not exist."<<endl;
+			cout<<"Password is incorrect."<<endl;
 		}
 	}
 

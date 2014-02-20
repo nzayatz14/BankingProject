@@ -34,24 +34,6 @@ void Admin::viewAccountInDetail(){
 	// ask for the account number of the account that the user wishes to view
 	//if it is a valid account number, open<accountNumber.txt> read in all of
 	//the information and print it all. If its not print error and call printOptions
-	/*ifstream in;
-	int accountNumber;
-	ostringstream ss;
-
-	cout << "Enter account number:"<<endl;
-	cin>>accountNumber;
-	ss<<accountNumber;
-	string acct = ss.str();
-	acct = acct + ".txt";
-
-	in.open(acct.c_str());
-	string temp;
-	while(!in.eof()){
-		getline(in, temp);
-		cout<<temp<<endl;
-	}
-	cout<<"\n";
-	in.close();*/
 
 	string user;
 	cout<<"Enter User Name: ";
@@ -140,10 +122,38 @@ void Admin::changePassword()
 	//the temporary account to the new password
 	//set the externalAccount in the Bank equal to the temporary
 	//call printOptions()
+
+	ExternalAccount temp;
+		temp.setAccountNumber(-1);
+
+		string un;
+		string pass;
+		string pass2;
+		cout<<"Please enter the username of the account that you wish to change the password for:" << endl;
+		cin>>un;
+
+		bank.find(un, temp);
+
+		if(temp.getAccountNumber()!=-1){
+			cout<<"Please enter the new password of the account:" << endl;
+			cin>>pass;
+
+			cout<<"Please enter the password again:" << endl;
+			cin>>pass2;
+
+			if(pass.compare(pass2)==0){
+				temp.setPassword(pass);
+				bank.updateAccount(un, temp);
+			}
+		}
 }
 
 void Admin::deleteAccount(){
+	string un;
+		cout<<"Please enter the user name of the account you wish to delete:" << endl;
+		cin>>un;
 
+		bank.deleteExternalAccount(un);
 }
 
 void Admin::printOptions()
@@ -154,7 +164,7 @@ void Admin::printOptions()
 	//function
 	int n = -1;
 	do{
-		cout<<"Here you can do: \n1. View bank  \n2. View the number of accounts  \n3. View an account in detail \n4. Create an account \n5. Delete an account \n6. Change password of account \n0. Exit"<<
+		cout<<"Here you can do: \n1. View bank  \n2. View the number of accounts  \n3. View an account in detail \n4. Create an account \n5. Delete an account \n6. Change password of account \n0. Logout"<<
 					"\nEnter the number you wish to choose: ";
 		cin>>n;
 		switch(n){
@@ -188,5 +198,5 @@ void Admin::printOptions()
 }
 
 void Admin::logout(){
-
+	bank.logout();
 }
