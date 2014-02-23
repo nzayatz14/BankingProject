@@ -165,7 +165,6 @@ void Admin::printOptions()
 	int n = -1;
 	do{
 		cout<<"Here you can do: \n1. View bank  \n2. View the number of accounts  \n3. View an account in detail \n4. Create an account \n5. Delete an account \n6. Change password of account \n0. Logout"<<
-<<<<<<< HEAD
 				"\nEnter the number you wish to choose: ";
 
 		try{
@@ -178,20 +177,6 @@ void Admin::printOptions()
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(),'\n');
 		}
-=======
-					"\nEnter the number you wish to choose: ";
-
-		try{
-					cin>>n;
-					if(!cin)
-						throw 1;
-				}
-				catch(int a){
-					n=-1;
-					cin.clear();
-					cin.ignore(numeric_limits<streamsize>::max(),'\n');
-				}
->>>>>>> 18349564be200977deb26f9785a6e4e31c9bc5e6
 		switch(n){
 		case 1:
 			viewBank();
