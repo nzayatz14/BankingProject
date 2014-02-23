@@ -66,7 +66,6 @@ void Client::withdraw(){
 	}
 }
 void Client::deposit(){
-
 	heldAccount[0].displayInternalAccount();
 	heldAccount[1].displayInternalAccount();
 	cout<<"Please select an account you want to deposit money to:"
@@ -120,6 +119,7 @@ void Client::printOptions(){
 	heldAccount[1].displayInternalAccount();
 	int n;
 	do{
+		n = -1;
 		cout<<"Here you can do:"<<endl;
 		cout<<"\t"<<"1.Withdrawal"<<endl;
 		cout<<"\t"<<"2.Deposit"<<endl;
@@ -127,7 +127,16 @@ void Client::printOptions(){
 		cout<<"\t"<<"0.Logout"<<endl;
 		cout<<"Enter a number to keep running:";
 
-		cin>>n;
+		try{
+			cin>>n;
+			if(!cin)
+				throw 1;
+		}
+		catch(int a){
+			n=-1;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(),'\n');
+		}
 
 		switch(n){
 		case 1:
@@ -152,3 +161,4 @@ void Client::printOptions(){
 void Client::logout(){
 
 }
+
