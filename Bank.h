@@ -22,6 +22,7 @@ class Bank {
 private:
 	unordered_map<string ,ExternalAccount> bank;
 	int totalAccounts;
+	bool emptyFile(string st);
 public:
 	Bank();
 	virtual ~Bank();

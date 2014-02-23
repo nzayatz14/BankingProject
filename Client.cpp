@@ -127,7 +127,16 @@ void Client::printOptions(){
 		cout<<"\t"<<"0.Logout"<<endl;
 		cout<<"Enter a number to keep running:";
 
-		cin>>n;
+		try{
+			cin>>n;
+			if(!cin)
+				throw 1;
+		}
+		catch(int a){
+			n=-1;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(),'\n');
+		}
 
 		switch(n){
 		case 1:
