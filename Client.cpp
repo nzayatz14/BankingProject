@@ -166,7 +166,7 @@ void Client::logout(){
 	clientNumb = ss.str();
 	clientNumb = clientNumb + ".txt";
 	acct.open(accountNumb.c_str());
-	clientFile << user << "\n";
+	clientFile << userName << "\n";
 	clientFile << pass << "\n";
 	clientFile << accountNumber << "\n\n";
 	clientFile << name << "\n";
