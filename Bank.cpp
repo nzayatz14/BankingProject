@@ -51,13 +51,15 @@ Bank::Bank() {
 				char gender;
 				getline(acct,name);
 				getline(acct,birthday);
-				in>>gender;
+				acct>>gender;
 				getline(acct,no);
 				getline(acct,phone);
 				getline(acct,address);
 				getline(acct,email);
 				getline(acct,no);
 				person.setPerson(name, birthday, gender, phone,address,email,user);
+				person.setAccountNumber(accountNumber);
+				person.setPassword(pass);
 
 				InternalAccount accounts[2];
 				accounts[0].setUsername(user);
@@ -116,8 +118,6 @@ void Bank::printBank(){
 	cout<<"\nUsername:\tPassword:\tAccount Number:"<<endl;
 	for(auto &i : bank){
 		ExternalAccount temp = i.second;
-		Client *c;
-		temp.getAccountHolder(c);
 		string userName = i.first;
 		cout<< userName<<"\t"<< temp.getPassword()<<"\t"<< temp.getAccountNumber()<<endl;
 	}
@@ -158,7 +158,48 @@ void Bank::updateAccount(string user, ExternalAccount &a){
 }
 
 void Bank::logout(){
+	ofstream bankFile;
+	bankFile.open("bank.txt");
+	//bankFile<<"admin admin 1"<<endl;
 
+	for(auto &i : bank){
+		ExternalAccount temp = i.second;
+		string userName = i.first;
+		bankFile<< userName<<" "<< temp.getPassword()<<" "<< temp.getAccountNumber()<<endl;
+
+		if(userName.compare("admin") != 0){
+			Client c;
+			Client *cPtr = &c;
+			temp.getAccountHolder(cPtr);
+
+			ofstream acctFile;
+			ostringstream ss;
+			string adminNumb;
+			ss<<temp.getAccountNumber();
+			adminNumb = ss.str();
+			adminNumb = adminNumb + ".txt";
+			InternalAccount things[2];
+			temp.getInternalAccounts(things[0],things[1]);
+
+			acctFile.open(adminNumb.c_str());
+			acctFile << c.getUserName() << "\n";
+			acctFile << temp.getPassword() << "\n";
+			acctFile << temp.getAccountNumber() << "\n\n";
+			acctFile << c.getName() << "\n";
+			acctFile << c.getBirthday() << "\n";
+			acctFile << c.getGender() << "\n";
+			acctFile << c.getPhoneNumber() << "\n";
+			acctFile << c.getAddress() << "\n";
+			acctFile << c.getEmail() << "\n\n";
+			acctFile << things[0].getAccountType()<<endl;
+			acctFile << things[0].getMoney() << "\n\n";
+			acctFile << things[1].getAccountType()<<endl;
+			acctFile << things[1].getMoney() << "\n";
+			acctFile.close();
+		}
+	}
+
+	bankFile.close();
 }
 
 bool Bank::emptyFile(string st){

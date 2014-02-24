@@ -48,7 +48,8 @@ void Admin::viewAccountInDetail(){
 	ext.getAccountHolder(cPtr);
 
 	cout<<endl<<c.getUserName()<<endl;
-	cout<<ext.getPassword()<<endl<<endl;
+	cout<<ext.getPassword()<<endl;
+	cout<<"Account Number: "<<ext.getAccountNumber()<<endl<<endl;
 	c.displayPersonalInformation();
 	cout<<endl;
 

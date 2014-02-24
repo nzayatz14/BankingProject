@@ -30,6 +30,10 @@ public:
 	string getUserName();
 	void setPerson(string, string, char, string, string, string, string);
 	void displayPersonalInformation();
+	void setAccountNumber(int n);
+	int getAccountNumber();
+	void setPassword(string s);
+	string getPassword();
 
 	virtual void printOptions() = 0;
 
@@ -41,6 +45,8 @@ protected:
 	string address;
 	string email;
 	string userName;
+	int accountNumber;
+	string password;
 };
 
 #endif /* PERSON_H_ */

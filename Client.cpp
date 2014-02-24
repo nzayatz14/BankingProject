@@ -6,6 +6,8 @@
  */
 
 #include<iostream>
+#include<fstream>
+#include<sstream>
 #include "Client.h"
 
 using namespace std;
@@ -38,6 +40,8 @@ void Client::getHeldAccount(InternalAccount &a,InternalAccount &b){
 void Client::copyClient(Client &into){
 	into.setHeldAccount(heldAccount[0],heldAccount[1]);
 	into.setPerson(name, birthday, gender, phoneNumber, address, email, userName);
+	into.setPassword(password);
+	into.setAccountNumber(accountNumber);
 }
 
 void Client::viewInternalAccount(){
@@ -159,5 +163,28 @@ void Client::printOptions(){
 }
 
 void Client::logout(){
+	ofstream clientFile;
+	ostringstream ss;
+	string accountNumb;
+	ss<<accountNumber;
+	accountNumb = ss.str();
+	accountNumb = accountNumb + ".txt";
 
+	clientFile.open(accountNumb.c_str());
+
+	clientFile << userName << "\n";
+	clientFile << password << "\n";
+	clientFile << accountNumber << "\n\n";
+	clientFile << name << "\n";
+	clientFile << birthday << "\n";
+	clientFile << gender << "\n";
+	clientFile << phoneNumber << "\n";
+	clientFile << address << "\n";
+	clientFile << email << "\n\n";
+	clientFile << heldAccount[0].getAccountType()<<endl;
+	clientFile << heldAccount[0].getMoney() << "\n\n";
+	clientFile << heldAccount[1].getAccountType()<<endl;
+	clientFile << heldAccount[1].getMoney() << "\n";;
+
+	clientFile.close();
 }

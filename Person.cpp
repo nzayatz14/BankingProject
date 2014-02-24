@@ -11,6 +11,8 @@ using namespace std;
 
 Person::Person() {
 	setPerson("name", "birthday", 'G', "phone", "address", "email", "user");
+	accountNumber = -1;
+	password = "pass";
 }
 
 Person::~Person() {
@@ -111,4 +113,20 @@ void Person::displayPersonalInformation()
 	cout<<phoneNumber<<endl;
 	cout<<address<<endl;
 	cout<<email<<endl;
+}
+
+void Person::setAccountNumber(int n){
+	accountNumber = n;
+}
+
+int Person::getAccountNumber(){
+	return accountNumber;
+}
+
+void Person::setPassword(string s){
+	password = s;
+}
+
+string Person::getPassword(){
+	return password;
 }
