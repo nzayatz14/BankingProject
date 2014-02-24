@@ -164,7 +164,7 @@ void Client::logout(){
 	string clientNumb;
 	ss<<accountNumber;
 	clientNumb = ss.str();
-	clientNumb = adminNumb + ".txt";
+	clientNumb = clientNumb + ".txt";
 	acct.open(accountNumb.c_str());
 	clientFile << user << "\n";
 	clientFile << pass << "\n";
