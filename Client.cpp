@@ -159,6 +159,26 @@ void Client::printOptions(){
 }
 
 void Client::logout(){
-	Bank::logout();
+	std::ofstring adminFile;
+	ostringstream ss;
+	string adminNumb;
+	ss<<accountNumber;
+	adminNumb = ss.str();
+	adminNumb = adminNumb + ".txt";
+	acct.open(accountNumb.c_str());
+	adminFile << user << "\n";
+	adminFile << pass << "\n";
+	adminFile << accountNumber << "\n\n";
+	adminFile << name << "\n";
+	adminFile << birthday << "\n";
+	adminFile << gender << "\n";
+	adminFile << phone << "\n";
+	adminFile << address << "\n";
+	adminFile << email << "\n\n";
+	adminFile << "Checking\n";
+	adminFile << money1 << "\n\n";
+	adminFile << "Savings\n";
+	adminFile << money2 << "\n";
+	adminFile.close();
 
 }
