@@ -171,6 +171,10 @@ void Bank::logout(){
 			Client c;
 			Client *cPtr = &c;
 			temp.getAccountHolder(cPtr);
+<<<<<<< HEAD
+=======
+			cout<<c.getName();
+>>>>>>> 713f706f9743562f101c9448fb4d01b3193833dd
 
 			ofstream acctFile;
 			ostringstream ss;

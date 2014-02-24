@@ -163,6 +163,7 @@ void Client::printOptions(){
 }
 
 void Client::logout(){
+<<<<<<< HEAD
 	ofstream clientFile;
 	ostringstream ss;
 	string accountNumb;
@@ -174,10 +175,22 @@ void Client::logout(){
 
 	clientFile << userName << "\n";
 	clientFile << password << "\n";
+=======
+	std::ofstring clientFile;
+	ostringstream ss;
+	string clientNumb;
+	ss<<accountNumber;
+	clientNumb = ss.str();
+	clientNumb = clientNumb + ".txt";
+	acct.open(accountNumb.c_str());
+	clientFile << userName << "\n";
+	clientFile << pass << "\n";
+>>>>>>> 713f706f9743562f101c9448fb4d01b3193833dd
 	clientFile << accountNumber << "\n\n";
 	clientFile << name << "\n";
 	clientFile << birthday << "\n";
 	clientFile << gender << "\n";
+<<<<<<< HEAD
 	clientFile << phoneNumber << "\n";
 	clientFile << address << "\n";
 	clientFile << email << "\n\n";
@@ -187,4 +200,15 @@ void Client::logout(){
 	clientFile << heldAccount[1].getMoney() << "\n";;
 
 	clientFile.close();
+=======
+	clientFile << phone << "\n";
+	clientFile << address << "\n";
+	clientFile << email << "\n\n";
+	clientFile << "Checking\n";
+	clientFile << money1 << "\n\n";
+	clientFile << "Savings\n";
+	clientFile << money2 << "\n";
+	adminFile.close();
+
+>>>>>>> 713f706f9743562f101c9448fb4d01b3193833dd
 }
