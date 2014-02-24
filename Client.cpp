@@ -7,7 +7,6 @@
 
 #include<iostream>
 #include "Client.h"
-#include "Bank.h"
 
 using namespace std;
 
