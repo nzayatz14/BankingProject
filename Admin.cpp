@@ -6,6 +6,7 @@
  */
 
 #include "Admin.h"
+#include "Bank.h"
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -207,5 +208,5 @@ void Admin::printOptions()
 }
 
 void Admin::logout(){
-	bank.logout();
+	bank:logout();
 }
