@@ -159,26 +159,26 @@ void Client::printOptions(){
 }
 
 void Client::logout(){
-	std::ofstring adminFile;
+	std::ofstring clientFile;
 	ostringstream ss;
-	string adminNumb;
+	string clientNumb;
 	ss<<accountNumber;
-	adminNumb = ss.str();
-	adminNumb = adminNumb + ".txt";
+	clientNumb = ss.str();
+	clientNumb = adminNumb + ".txt";
 	acct.open(accountNumb.c_str());
-	adminFile << user << "\n";
-	adminFile << pass << "\n";
-	adminFile << accountNumber << "\n\n";
-	adminFile << name << "\n";
-	adminFile << birthday << "\n";
-	adminFile << gender << "\n";
-	adminFile << phone << "\n";
-	adminFile << address << "\n";
-	adminFile << email << "\n\n";
-	adminFile << "Checking\n";
-	adminFile << money1 << "\n\n";
-	adminFile << "Savings\n";
-	adminFile << money2 << "\n";
+	clientFile << user << "\n";
+	clientFile << pass << "\n";
+	clientFile << accountNumber << "\n\n";
+	clientFile << name << "\n";
+	clientFile << birthday << "\n";
+	clientFile << gender << "\n";
+	clientFile << phone << "\n";
+	clientFile << address << "\n";
+	clientFile << email << "\n\n";
+	clientFile << "Checking\n";
+	clientFile << money1 << "\n\n";
+	clientFile << "Savings\n";
+	clientFile << money2 << "\n";
 	adminFile.close();
 
 }
