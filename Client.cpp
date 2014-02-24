@@ -159,5 +159,6 @@ void Client::printOptions(){
 }
 
 void Client::logout(){
+	Bank::logout();
 
 }
