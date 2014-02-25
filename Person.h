@@ -36,6 +36,7 @@ public:
 	string getPassword();	// returns the password
 
 	virtual void printOptions() = 0;	// virtual function that will be in both admin and client class
+	virtual void logout() = 0;
 
 protected:	// protected variables used in functions
 	string name;
