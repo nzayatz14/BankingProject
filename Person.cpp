@@ -102,11 +102,6 @@ void Person::setPerson(string n, string b, char g, string p, string a, string e,
 
 void Person::displayPersonalInformation()
 {
-	/*string n;
-	n=Person.getName();
-	cout<<n;
-	 */
-
 	cout<<name<<endl;
 	cout<<birthday<<endl;
 	cout<<gender<<endl;
@@ -130,3 +125,4 @@ void Person::setPassword(string s){
 string Person::getPassword(){
 	return password;
 }
+
