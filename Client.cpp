@@ -297,10 +297,13 @@ void Client::logout(){
 	string accountNumb;
 	ss<<accountNumber;
 	accountNumb = ss.str();
+	//get the file name in string format
 	accountNumb = accountNumb + ".txt";
 
+	//open the internalAccount text file, ex  1.txt
 	clientFile.open(accountNumb.c_str());
 
+	//overwrite all the information into the text file
 	clientFile << userName << "\n";
 	clientFile << password << "\n";
 	clientFile << accountNumber << "\n\n";
@@ -315,6 +318,7 @@ void Client::logout(){
 	clientFile << heldAccount[1].getAccountType()<<endl;
 	clientFile << heldAccount[1].getMoney() << "\n";;
 
+	//close up the text file
 	clientFile.close();
 }
 
