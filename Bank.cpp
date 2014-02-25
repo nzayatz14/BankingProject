@@ -115,7 +115,7 @@ Bank::Bank() {
 			}
 
 			//insert the new externalAccount to the bank with the username input and increment the bank size
-			bank.insert(make_pair<string,ExternalAccount>(user, temp));
+			bank.insert(make_pair(user, temp));
 			totalAccounts = bank.size();
 		}
 
@@ -171,7 +171,7 @@ void Bank::createExternalAccount(Client &a, string pass){
 	string user = a.getUserName();
 	cout<<user<<" ";
 	n.displayExternalAccount();
-	bank.insert(make_pair<string,ExternalAccount>(user, n));
+	bank.insert(make_pair(user, n));
 
 }
 

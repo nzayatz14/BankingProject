@@ -19,10 +19,14 @@ AccountAccessor::~AccountAccessor() {
 	// TODO Auto-generated destructor stub
 }
 
+//Pre: passes in a person pointer to be returned and an external account by reference to be returned
+//Post: set the person equal to the person logging in and the externalAccount equal to the account that
+//has been logged in to
 Person* AccountAccessor::login(Person *per, ExternalAccount &e){
 	string name, pass;
 	bool success = false;
 
+	//read in the username and password
 	while(!success){
 		cout<<"Username: ";
 		cin>>name;
@@ -30,11 +34,15 @@ Person* AccountAccessor::login(Person *per, ExternalAccount &e){
 		cin>>pass;
 
 		InternalAccount temp[2];
+
+		//try to find the account with the given username
 		bank.find(name, e);
 
+		//if the username is found, check if the password matches
 		if(e.getAccountNumber() != -1){
 			e.getInternalAccounts(temp[0],temp[1]);
 			if (pass.compare(e.getPassword()) == 0){
+				//if the password matches, set the person equal to whoever logs in
 				success = true;
 				if(name.compare("admin") != 0){
 					per = new Client();
@@ -51,6 +59,7 @@ Person* AccountAccessor::login(Person *per, ExternalAccount &e){
 		}
 	}
 
+	//return the person
 	return per;
 }
 
