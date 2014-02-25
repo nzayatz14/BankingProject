@@ -2,7 +2,7 @@
  * Admin.cpp
  *
  *  Created on: Feb 1, 2014
- *      Author: mac2nd
+ *      Author: nzayatz14
  */
 
 #include "Admin.h"
@@ -20,13 +20,13 @@ Admin::~Admin() {
 	// TODO Auto-generated destructor stub
 }
 
-void Admin::viewBank(){
-	// prints the current bank to screen
+void Admin::viewBank()
+{
 	bank.printBank();
 }
 
-void Admin::viewAccounts(){
-	// prints total number of accounts
+void Admin::viewAccounts()
+{
 	cout<<"\nTotal number of accounts: "<<bank.getTotalAccounts()<<endl<<endl;
 }
 
@@ -86,7 +86,7 @@ void Admin::createAccount(){
 	cout<<"Please enter last name of client."<< endl;
 	cin>>lastName;
 
-	string n = firstName + " " + lastName;
+	string n = firstName + " "+lastName;
 
 	cout<<"Please enter birthday of client."<< endl;
 	cin>>b;
@@ -94,14 +94,6 @@ void Admin::createAccount(){
 	cout<<"Please enter gender of client."<< endl;
 	cin>>g;
 
-	// Loop checking for m, M or f, F
-	while(toupper(g) != 'M' && toupper(g) != 'F')
-	{
-		cout<<"Please enter M or F for male or female." << endl;
-		cin>>g;
-		cout<<g;
-	}
-	
 	cout<<"Please enter in phone number of client"<< endl;
 	cin>>p;
 	getline(cin, a);
@@ -158,7 +150,6 @@ void Admin::changePassword()
 }
 
 void Admin::deleteAccount(){
-	//Asks for a username and then deletes the specified account from bank
 	string un;
 	cout<<"Please enter the user name of the account you wish to delete:" << endl;
 	cin>>un;
@@ -166,7 +157,8 @@ void Admin::deleteAccount(){
 	bank.deleteExternalAccount(un);
 }
 
-void Admin::printOptions(){
+void Admin::printOptions()
+{
 	//print and number the capabilities of the administrator (create an account, delete
 	//an account, view a specific account, or change the password to an account)
 	//ask the option which the user wants to do (by number) and call the respective
@@ -216,7 +208,5 @@ void Admin::printOptions(){
 }
 
 void Admin::logout(){
-	// logouts out of the admin
 	bank.logout();
 }
-
