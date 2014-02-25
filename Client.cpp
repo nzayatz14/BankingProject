@@ -210,7 +210,7 @@ void Client::transfer(){
 					throw 2;
 			}
 			catch(int b){
-				n=0;
+				m=0;
 				cin.clear();
 				cin.ignore(numeric_limits<streamsize>::max(),'\n');
 				cout<<"Please enter a valid number."<<endl;
@@ -223,6 +223,7 @@ void Client::transfer(){
 		//update the money in accounts
 		else{
 			heldAccount[n-1].setMoney(heldAccount[n-1].getMoney()-m);//update the money in the account
+			cout<<"Process succeeds."<<endl;
 			switch(n-1){
 				case 0:
 					heldAccount[1].setMoney(heldAccount[1].getMoney()+m);//update the money in the other account
@@ -234,7 +235,6 @@ void Client::transfer(){
 					break;
 			}
 		}
-		cout<<"Process succeeds."<<endl;
 		viewInternalAccount();
 	}
 }
