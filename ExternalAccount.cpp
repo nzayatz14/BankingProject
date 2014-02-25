@@ -24,7 +24,7 @@ void ExternalAccount::createInternalAccounts(){
 }
 
 void ExternalAccount::displayExternalAccount(){
-	cout<<accountHolder.getUserName()<<" "<<password<<" "<<accountNumber<<endl;
+	cout<<accountHolder.getUserName()<<"\t"<<password<<"\t"<<accountNumber<<endl;
 }
 
 string ExternalAccount::getPassword(){
