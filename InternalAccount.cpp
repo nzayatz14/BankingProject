@@ -17,11 +17,6 @@ InternalAccount::InternalAccount() {
 	username="user";
 }//end InternalAccount
 
-//InternalAccount::~InternalAccount() {
-//	// TODO Auto-generated destructor stub
-//	delete [] externalAccount;
-//}//end ~InternalAccount
-
 void InternalAccount::copyInternalAccount(InternalAccount& into){
 	into.setMoney(money);
 	into.setAccountType(accountType);
